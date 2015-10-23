@@ -10,10 +10,6 @@ import UIKit
 
 class OptionalFeedbackViewController: UIViewController {
     
-    @IBOutlet weak var strugglingTitleLabel: UILabel!
-    @IBOutlet weak var comfortableTitleLabel: UILabel!
-    @IBOutlet weak var ratingTitleLabel: UILabel!
-    
     @IBOutlet weak var ratingSliderLabel: UILabel!
     @IBOutlet weak var ratingSlider: UISlider!
     
@@ -22,7 +18,7 @@ class OptionalFeedbackViewController: UIViewController {
     
     @IBOutlet weak var submitButton: UIUCButton!
     
-    @IBOutlet weak var containerView: UIView!
+
     
     var feedbackObject: Feedback!
     private var lastAnimationDistance: CGFloat!
@@ -32,7 +28,6 @@ class OptionalFeedbackViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "findKeyboardHeight:", name: UIKeyboardWillShowNotification, object: nil)
     }
     
     //MARK: UI
@@ -54,21 +49,21 @@ class OptionalFeedbackViewController: UIViewController {
         strugglingTextView.tintColor = UIUCColor.ORANGE
     }
     
-    private func blurUIBehind(textView: UITextView, enabled: Bool) {
-        if textView == comfortableTextView {
-            strugglingTextView.hidden = enabled
-            strugglingTitleLabel.hidden = enabled
-        } else {
-            comfortableTextView.hidden = enabled
-            comfortableTitleLabel.hidden = enabled
-        }
-        
-        ratingTitleLabel.hidden = enabled
-        ratingSlider.hidden = enabled
-        ratingSliderLabel.hidden = enabled
-        
-        submitButton.hidden = enabled
-    }
+//    private func blurUIBehind(textView: UITextView, enabled: Bool) {
+//        if textView == comfortableTextView {
+//            strugglingTextView.hidden = enabled
+//            strugglingTitleLabel.hidden = enabled
+//        } else {
+//            comfortableTextView.hidden = enabled
+//            comfortableTitleLabel.hidden = enabled
+//        }
+//        
+//        ratingTitleLabel.hidden = enabled
+//        ratingSlider.hidden = enabled
+//        ratingSliderLabel.hidden = enabled
+//        
+//        submitButton.hidden = enabled
+//    }
     
     @IBAction func submitButtonTapped(sender: UIUCButton) {
         
@@ -80,8 +75,13 @@ class OptionalFeedbackViewController: UIViewController {
             do {
                 let status = try retrieveStatus()
                 
-                print("Success: \(status)")
+                self.comfortableTextView.resignFirstResponder()
+                self.strugglingTextView.resignFirstResponder()
+                
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                
                 let alert = SCLAlertView()
+                
                 alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.ORANGE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
                 
             } catch let error as NSError {
@@ -104,45 +104,5 @@ extension OptionalFeedbackViewController: UITextViewDelegate {
             textView.resignFirstResponder()
         }
         return true
-    }
-    
-    func textViewDidEndEditing(textView: UITextView) {
-        blurUIBehind(textView, enabled: false)
-        animateTextView(-lastAnimationDistance, textView: textView)
-    }
-    
-    //computes the keyboard's size so I can shift the view upwards the minimal amount necessary so that the text field is fully visible
-    func findKeyboardHeight(notification: NSNotification) {
-        let info  = notification.userInfo!
-        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
-        
-        let rawFrame = value.CGRectValue
-        let keyboardTop = view.convertRect(rawFrame, fromView: nil).minY
-        
-        let padding: CGFloat = 20
-        
-        if comfortableTextView.isFirstResponder() {
-            blurUIBehind(comfortableTextView, enabled: true)
-            lastAnimationDistance = keyboardTop - comfortableTextView.frame.maxY - padding
-            print(lastAnimationDistance)
-            animateTextView(lastAnimationDistance, textView: comfortableTextView)
-        } else {
-            blurUIBehind(strugglingTextView, enabled: true)
-            
-            lastAnimationDistance = keyboardTop - strugglingTextView.frame.maxY - padding
-            print(lastAnimationDistance)
-            animateTextView(lastAnimationDistance, textView: strugglingTextView)
-        }
-    }
-    
-    func animateTextView(movementDistance: CGFloat, textView: UITextView) {
-        let keyboardAnimationLength = 0.300000011920929
-        
-        UIView.beginAnimations("animateTextView", context: nil)
-        
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(keyboardAnimationLength)
-        self.containerView.frame = CGRectOffset(self.containerView.frame, 0, movementDistance)
-        UIView.commitAnimations()
     }
 }

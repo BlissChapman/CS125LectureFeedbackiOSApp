@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 class Feedback {
+    /**
+        The UsersID property is cached offline and used to pre-populate the net id field in subsequent launches.
+    */
+    static var UsersID: String? {
+        get { return NSUserDefaults.standardUserDefaults().valueForKey("UsersID") as? String }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "UsersID")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
     
     var yourNetID: String
     var theirNetID: String

@@ -42,7 +42,13 @@ class NetIDViewController: UIViewController {
         
         partnerIDTextField.delegate = self
         netIDTextField.delegate = self
-        netIDTextField.becomeFirstResponder()
+        
+        if let cachedID = Feedback.UsersID {
+            netIDTextField.text = cachedID
+            partnerIDTextField.becomeFirstResponder()
+        } else {
+            netIDTextField.becomeFirstResponder()
+        }
     }
     
     @IBAction func nextButtonTapped(sender: UIUCButton) {
@@ -52,6 +58,9 @@ class NetIDViewController: UIViewController {
         guard let partnerID = partnerIDTextField.text else {
             return
         }
+        
+        //save the users net id to use in pre-populating the text field the next time the user opens the app
+        Feedback.UsersID = netID
         
         feedbackObject = Feedback(netID: netID, partnerID: partnerID)
         performSegueWithIdentifier(Segues.toOptionalFeedback, sender: nil)

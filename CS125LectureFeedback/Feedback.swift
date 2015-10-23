@@ -93,7 +93,8 @@ class Feedback {
                 }
                 
                 print(responseData)
-                callback(retrieveStatus: { return responseData.containsString(self.yourNetID) && statusCode == 200 })
+                let successful = responseData.containsString(self.yourNetID) && responseData.containsString(self.theirNetID) && statusCode == 200
+                callback(retrieveStatus: { return successful })
 
                 
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false

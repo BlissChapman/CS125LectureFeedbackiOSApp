@@ -33,15 +33,6 @@ class OptionalFeedbackViewController: UIViewController {
         
         configureUI()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "findKeyboardHeight:", name: UIKeyboardWillShowNotification, object: nil)
-
-        feedbackObject.submit { (retrieveStatus) -> Void in
-            do {
-                let status = try retrieveStatus()
-                print("Success: \(status)")
-            } catch let error as NSError {
-                debugPrint(error)
-            }
-        }
     }
     
     //MARK: UI
@@ -59,6 +50,8 @@ class OptionalFeedbackViewController: UIViewController {
         strugglingTextView.layer.borderColor = UIColor.grayColor().CGColor
         comfortableTextView.layer.borderWidth = 0.5
         strugglingTextView.layer.borderWidth = 0.5
+        comfortableTextView.tintColor = UIUCColor.ORANGE
+        strugglingTextView.tintColor = UIUCColor.ORANGE
     }
     
     private func blurUIBehind(textView: UITextView, enabled: Bool) {
@@ -77,6 +70,25 @@ class OptionalFeedbackViewController: UIViewController {
         submitButton.hidden = enabled
     }
     
+    @IBAction func submitButtonTapped(sender: UIUCButton) {
+        
+        feedbackObject.understand = comfortableTextView.text
+        feedbackObject.struggle = strugglingTextView.text
+        feedbackObject.lectureRating = Int(ratingSlider.value)
+        
+        feedbackObject.submit { (retrieveStatus) -> Void in
+            do {
+                let status = try retrieveStatus()
+                
+                print("Success: \(status)")
+                let alert = SCLAlertView()
+                alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.ORANGE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+                
+            } catch let error as NSError {
+                debugPrint(error)
+            }
+        }
+    }
     //MARK: Rating Slider
     @IBAction func ratingSliderChanged(sender: UISlider) {
         ratingSlider.value = roundf(ratingSlider.value)

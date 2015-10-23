@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A55201621BD556E700411155 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201611BD556E600411155 /* Feedback.swift */; settings = {ASSET_TAGS = (); }; };
-		A55201641BD55D8D00411155 /* OptionalFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201631BD55D8D00411155 /* OptionalFeedbackViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		A55201661BD5787500411155 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201651BD5787500411155 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
+		A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */; };
+		A55201621BD556E700411155 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201611BD556E600411155 /* Feedback.swift */; };
+		A55201641BD55D8D00411155 /* OptionalFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201631BD55D8D00411155 /* OptionalFeedbackViewController.swift */; };
+		A55201661BD5787500411155 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201651BD5787500411155 /* Utilities.swift */; };
 		A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FBF1BD49BA800524E2C /* AppDelegate.swift */; };
 		A5839FC21BD49BA800524E2C /* NetIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FC11BD49BA800524E2C /* NetIDViewController.swift */; };
 		A5839FC51BD49BA800524E2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5839FC31BD49BA800524E2C /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		A55201611BD556E600411155 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		A55201631BD55D8D00411155 /* OptionalFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalFeedbackViewController.swift; sourceTree = "<group>"; };
 		A55201651BD5787500411155 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -49,6 +51,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A508B0B21BDAA90C00EB26D7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A5839FD81BD523BF00524E2C /* UIUCButton.swift */,
+				A55201651BD5787500411155 /* Utilities.swift */,
+				A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */,
+				A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */,
+				A5839FD11BD4A46B00524E2C /* NetIDTextField.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		A5839FB31BD49BA800524E2C = {
 			isa = PBXGroup;
 			children = (
@@ -84,11 +98,8 @@
 				A5839FD31BD4A7CB00524E2C /* Model.swift */,
 				A5839FC61BD49BA800524E2C /* Assets.xcassets */,
 				A5839FC81BD49BA800524E2C /* LaunchScreen.storyboard */,
-				A55201651BD5787500411155 /* Utilities.swift */,
 				A5839FCB1BD49BA800524E2C /* Info.plist */,
-				A5839FD81BD523BF00524E2C /* UIUCButton.swift */,
-				A5839FD11BD4A46B00524E2C /* NetIDTextField.swift */,
-				A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */,
+				A508B0B21BDAA90C00EB26D7 /* Utilities */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -166,6 +177,7 @@
 			files = (
 				A55201621BD556E700411155 /* Feedback.swift in Sources */,
 				A55201641BD55D8D00411155 /* OptionalFeedbackViewController.swift in Sources */,
+				A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */,
 				A5839FD21BD4A46B00524E2C /* NetIDTextField.swift in Sources */,
 				A5839FC21BD49BA800524E2C /* NetIDViewController.swift in Sources */,
 				A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */,

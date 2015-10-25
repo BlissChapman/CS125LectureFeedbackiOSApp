@@ -53,16 +53,8 @@ class SubmitViewController: UIViewController {
         submitLoadingIndicator.startAnimating()
         submitButton.setTitle("", forState: .Normal)
 
-        //let the keyboard disappear
+        //dismiss all keyboards
         view.endEditing(true)
-        
-        guard Feedback.isConnectedToInternet else {
-            let alert = SCLAlertView()
-            alert.showError("Error", subTitle: "Please connect to a wifi or cellular network and then try again.", closeButtonTitle: "Dismiss", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
-            submitLoadingIndicator.stopAnimating()
-            submitButton.setTitle("Submit", forState: .Normal)
-            return
-        }
         
         guard feedbackObject != nil else {
             let alert = SCLAlertView()
@@ -88,6 +80,14 @@ class SubmitViewController: UIViewController {
                 
                 alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
                 
+            } catch Feedback.FeedbackError.Logical {
+                alert.showError("Error", subTitle: "Uh oh, something strange happened.  Please restart the app.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            } catch Feedback.FeedbackError.EncodingData {
+                alert.showError("Error", subTitle: "We could not successfully determine your submission status (0).  Please try again.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            } catch Feedback.FeedbackError.UndeterminedStatus {
+                alert.showError("Error", subTitle: "We could not successfully determine your submission status (1).  Please try again.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            } catch Feedback.FeedbackError.StatusCodeRetrieval {
+                alert.showError("Error", subTitle: "We could not successfully determine your submission status (2).  Please try again.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             } catch let error as NSError {
                 alert.showError("Error", subTitle: error.localizedDescription, closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             }

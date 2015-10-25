@@ -66,14 +66,15 @@ class NetIDViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(sender: UIUCButton) {
-        guard let netID = netIDTextField.text else {
+        guard let netID = netIDTextField.text where netID.isValidNetID() else {
             return
         }
-        guard let partnerID = partnerIDTextField.text else {
+        guard let partnerID = partnerIDTextField.text where netID.isValidNetID() else {
             return
         }
         
-        //save the users net id to use in pre-populating the text field the next time the user opens the app
+        //save the users net id to use in pre-populating the text field
+        // so that the next time the user opens the app they don't need to type as much
         Feedback.UsersID = netID
         
         feedbackObject = Feedback(netID: netID, partnerID: partnerID)
@@ -123,20 +124,19 @@ extension NetIDViewController: UITextFieldDelegate {
             partnerIDTextField.becomeFirstResponder()
         } else if textField == partnerIDTextField {
             partnerIDTextField.resignFirstResponder()
-            //trigger next button click
         }
         
         return true
     }
     
-    //only allow a login attempt if certain conditions are met
+    //only allow a submission attempt if certain conditions are met
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        guard let netID = netIDTextField.text where netID.characters.count > 2 else {
+        guard let netID = netIDTextField.text where netID.isValidNetID() else {
             nextButton.enabled = false
             return true
         }
-        guard let partnerID = partnerIDTextField.text where partnerID.characters.count > 2 else {
+        guard let partnerID = partnerIDTextField.text where partnerID.isValidNetID() else {
             nextButton.enabled = false
             return true
         }

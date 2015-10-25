@@ -21,16 +21,34 @@ class Feedback {
         }
     }
     
-    static var isConnectedToInternet: Bool {
+    /**
+     Indicates the internet connectivity status of the user's device.
+     */
+    private static var isConnectedToInternet: Bool {
         get {
             return Reachability.reachabilityForInternetConnection().currentReachabilityStatus().rawValue != NotReachable.rawValue
         }
     }
     
+    /**
+     The user's net id.
+     */
     var yourNetID: String
+    /**
+     The user's partner's net id.
+     */
     var theirNetID: String
+    /**
+     The ambiguous slider rating - could indicate their rating of the lecture, their partner, or even how good Professor Chapman's cookies were that day.
+     */
     var lectureRating: Int = 5
+    /**
+     Any optional input regarding the topics with which the user is comfortable.
+     */
     var understand: String?
+    /**
+     Any optional input regarding the topics with which the user is struggling.
+     */
     var struggle: String?
     
     
@@ -47,6 +65,7 @@ class Feedback {
         case UndeterminedStatus
         case EncodingData
         case StatusCodeRetrieval
+        case NoInternetConnection
     }
     
     private struct Parameters {
@@ -57,8 +76,19 @@ class Feedback {
         static let Struggling = "struggle"
     }
     
-    func submit(completion callback: (retrieveStatus: () throws -> Bool) -> Void) {
     
+    /**
+     Attempts to submit the feedback object.
+     
+     - Parameters: 
+        - completion: handle this callback to determine the status of the submission attempt by calling the retrieveStatus function.
+     */
+    func submit(completion callback: (retrieveStatus: () throws -> Bool) -> Void) {
+        guard Feedback.isConnectedToInternet else {
+            callback(retrieveStatus: { throw FeedbackError.NoInternetConnection })
+            return
+        }
+        
         guard let url = NSURL(string: URL) else {
             callback(retrieveStatus: { throw FeedbackError.Logical })
             return

@@ -20,7 +20,7 @@ public enum SCLActionType {
 }
 
 // Button sub-class
-public class SCLButton: UIButton {
+public class SCLButton: UIUCButton {
     var actionType = SCLActionType.None
     var target:AnyObject!
     var selector:Selector!

@@ -35,6 +35,19 @@ class NetIDViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //if both the text fields already contain valid net ids, then there is no reason to display the keyboard - this will occur after a successful submission
+        if (partnerIDTextField.text ?? "").isValidNetID() {
+            partnerIDTextField.resignFirstResponder()
+        }
+        
+        if (netIDTextField.text ?? "").isValidNetID() {
+            netIDTextField.resignFirstResponder()
+        }
+    }
+    
     //MARK: UI
     private func configureUI() {
         nextButton.enabled = false
@@ -43,6 +56,7 @@ class NetIDViewController: UIViewController {
         partnerIDTextField.delegate = self
         netIDTextField.delegate = self
         
+        //display the keyboard
         if let cachedID = Feedback.UsersID {
             netIDTextField.text = cachedID
             partnerIDTextField.becomeFirstResponder()
@@ -69,7 +83,7 @@ class NetIDViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == Segues.toOptionalFeedback {
-                if let vc = segue.destinationViewController as? OptionalFeedbackViewController {
+                if let vc = segue.destinationViewController as? SubmitViewController {
                     vc.feedbackObject = feedbackObject
                 }
             }

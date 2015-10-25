@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionalFeedbackViewController: UIViewController {
+class SubmitViewController: UIViewController {
     
     @IBOutlet weak var ratingSliderLabel: UILabel!
     @IBOutlet weak var ratingSlider: UISlider!
@@ -17,7 +17,7 @@ class OptionalFeedbackViewController: UIViewController {
     @IBOutlet weak var strugglingTextView: UITextView!
     
     @IBOutlet weak var submitButton: UIUCButton!
-    
+    @IBOutlet weak var submitLoadingIndicator: UIActivityIndicatorView!
 
     
     var feedbackObject: Feedback!
@@ -49,46 +49,51 @@ class OptionalFeedbackViewController: UIViewController {
         strugglingTextView.tintColor = UIUCColor.ORANGE
     }
     
-//    private func blurUIBehind(textView: UITextView, enabled: Bool) {
-//        if textView == comfortableTextView {
-//            strugglingTextView.hidden = enabled
-//            strugglingTitleLabel.hidden = enabled
-//        } else {
-//            comfortableTextView.hidden = enabled
-//            comfortableTitleLabel.hidden = enabled
-//        }
-//        
-//        ratingTitleLabel.hidden = enabled
-//        ratingSlider.hidden = enabled
-//        ratingSliderLabel.hidden = enabled
-//        
-//        submitButton.hidden = enabled
-//    }
-    
     @IBAction func submitButtonTapped(sender: UIUCButton) {
+        submitLoadingIndicator.startAnimating()
+        submitButton.setTitle("", forState: .Normal)
+
+        //let the keyboard disappear
+        view.endEditing(true)
+        
+        guard Feedback.isConnectedToInternet else {
+            let alert = SCLAlertView()
+            alert.showError("Error", subTitle: "Please connect to a wifi or cellular network and then try again.", closeButtonTitle: "Dismiss", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            submitLoadingIndicator.stopAnimating()
+            submitButton.setTitle("Submit", forState: .Normal)
+            return
+        }
+        
+        guard feedbackObject != nil else {
+            let alert = SCLAlertView()
+            alert.showError("Error", subTitle: "Uh oh, we've encountered an unidentified error.  Please restart the app.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            submitLoadingIndicator.stopAnimating()
+            submitButton.setTitle("Submit", forState: .Normal)
+            return
+        }
         
         feedbackObject.understand = comfortableTextView.text
         feedbackObject.struggle = strugglingTextView.text
         feedbackObject.lectureRating = Int(ratingSlider.value)
         
         feedbackObject.submit { (retrieveStatus) -> Void in
+            self.submitLoadingIndicator.stopAnimating()
+            self.submitButton.setTitle("Submit", forState: .Normal)
+            let alert = SCLAlertView()
+
             do {
                 let status = try retrieveStatus()
                 
-                self.comfortableTextView.resignFirstResponder()
-                self.strugglingTextView.resignFirstResponder()
-                
                 self.navigationController?.popToRootViewControllerAnimated(true)
                 
-                let alert = SCLAlertView()
-                
-                alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.ORANGE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+                alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
                 
             } catch let error as NSError {
-                debugPrint(error)
+                alert.showError("Error", subTitle: error.localizedDescription, closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             }
         }
     }
+    
     //MARK: Rating Slider
     @IBAction func ratingSliderChanged(sender: UISlider) {
         ratingSlider.value = roundf(ratingSlider.value)
@@ -97,7 +102,7 @@ class OptionalFeedbackViewController: UIViewController {
     
 }
 
-extension OptionalFeedbackViewController: UITextViewDelegate {
+extension SubmitViewController: UITextViewDelegate {
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */; };
+		A50D27B71BDD62DA00AB5F65 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A50D27B61BDD62DA00AB5F65 /* Reachability.m */; };
 		A55201621BD556E700411155 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201611BD556E600411155 /* Feedback.swift */; };
-		A55201641BD55D8D00411155 /* OptionalFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201631BD55D8D00411155 /* OptionalFeedbackViewController.swift */; };
+		A55201641BD55D8D00411155 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201631BD55D8D00411155 /* SubmitViewController.swift */; };
 		A55201661BD5787500411155 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201651BD5787500411155 /* Utilities.swift */; };
 		A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FBF1BD49BA800524E2C /* AppDelegate.swift */; };
 		A5839FC21BD49BA800524E2C /* NetIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FC11BD49BA800524E2C /* NetIDViewController.swift */; };
@@ -24,8 +25,11 @@
 
 /* Begin PBXFileReference section */
 		A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		A50D27B41BDD62D800AB5F65 /* CS125LectureFeedback-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CS125LectureFeedback-Bridging-Header.h"; sourceTree = "<group>"; };
+		A50D27B51BDD62DA00AB5F65 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A50D27B61BDD62DA00AB5F65 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A55201611BD556E600411155 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
-		A55201631BD55D8D00411155 /* OptionalFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalFeedbackViewController.swift; sourceTree = "<group>"; };
+		A55201631BD55D8D00411155 /* SubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		A55201651BD5787500411155 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A5839FBC1BD49BA800524E2C /* CS125LectureFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS125LectureFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5839FBF1BD49BA800524E2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,13 +58,23 @@
 		A508B0B21BDAA90C00EB26D7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				A5839FD81BD523BF00524E2C /* UIUCButton.swift */,
 				A55201651BD5787500411155 /* Utilities.swift */,
-				A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */,
-				A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */,
+				A5839FD81BD523BF00524E2C /* UIUCButton.swift */,
 				A5839FD11BD4A46B00524E2C /* NetIDTextField.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		A50D27B81BDD62EF00AB5F65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A50D27B41BDD62D800AB5F65 /* CS125LectureFeedback-Bridging-Header.h */,
+				A50D27B51BDD62DA00AB5F65 /* Reachability.h */,
+				A50D27B61BDD62DA00AB5F65 /* Reachability.m */,
+				A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */,
+				A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A5839FB31BD49BA800524E2C = {
@@ -84,7 +98,7 @@
 			children = (
 				A5839FBF1BD49BA800524E2C /* AppDelegate.swift */,
 				A5839FC11BD49BA800524E2C /* NetIDViewController.swift */,
-				A55201631BD55D8D00411155 /* OptionalFeedbackViewController.swift */,
+				A55201631BD55D8D00411155 /* SubmitViewController.swift */,
 				A55201611BD556E600411155 /* Feedback.swift */,
 				A5839FC31BD49BA800524E2C /* Main.storyboard */,
 				A5839FD51BD4A7D300524E2C /* Supporting */,
@@ -100,6 +114,7 @@
 				A5839FC81BD49BA800524E2C /* LaunchScreen.storyboard */,
 				A5839FCB1BD49BA800524E2C /* Info.plist */,
 				A508B0B21BDAA90C00EB26D7 /* Utilities */,
+				A50D27B81BDD62EF00AB5F65 /* Frameworks */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -176,8 +191,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55201621BD556E700411155 /* Feedback.swift in Sources */,
-				A55201641BD55D8D00411155 /* OptionalFeedbackViewController.swift in Sources */,
+				A55201641BD55D8D00411155 /* SubmitViewController.swift in Sources */,
 				A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */,
+				A50D27B71BDD62DA00AB5F65 /* Reachability.m in Sources */,
 				A5839FD21BD4A46B00524E2C /* NetIDTextField.swift in Sources */,
 				A5839FC21BD49BA800524E2C /* NetIDViewController.swift in Sources */,
 				A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */,
@@ -297,10 +313,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CS125LectureFeedback/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.CS125LectureFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CS125LectureFeedback/CS125LectureFeedback-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -308,10 +327,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CS125LectureFeedback/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.CS125LectureFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CS125LectureFeedback/CS125LectureFeedback-Bridging-Header.h";
 			};
 			name = Release;
 		};

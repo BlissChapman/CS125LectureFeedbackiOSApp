@@ -21,6 +21,12 @@ class Feedback {
         }
     }
     
+    static var isConnectedToInternet: Bool {
+        get {
+            return Reachability.reachabilityForInternetConnection().currentReachabilityStatus().rawValue != NotReachable.rawValue
+        }
+    }
+    
     var yourNetID: String
     var theirNetID: String
     var lectureRating: Int = 5

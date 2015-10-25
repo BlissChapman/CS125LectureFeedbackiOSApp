@@ -32,3 +32,9 @@ extension UIColor {
         return UInt((Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0)
     }
 }
+
+extension String {
+    func isValidNetID() -> Bool {
+        return self.characters.count >= 2
+    }
+}

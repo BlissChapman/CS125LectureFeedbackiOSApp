@@ -8,17 +8,21 @@
 
 import UIKit
 
-class UIUCButton: ZFRippleButton {
+public class UIUCButton: ZFRippleButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        
+        configureAttributes()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        configureAttributes()
+    }
+    
+    private func configureAttributes() {
         self.backgroundColor = UIUCColor.BLUE
         
         self.buttonCornerRadius = Float(self.frame.height / 4.0)

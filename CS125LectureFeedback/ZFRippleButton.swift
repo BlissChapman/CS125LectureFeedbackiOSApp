@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 
 @IBDesignable
-class ZFRippleButton: UIButton {
+public class ZFRippleButton: UIButton {
     
     @IBInspectable var ripplePercent: Float = 0.8 {
         didSet {
@@ -62,7 +62,7 @@ class ZFRippleButton: UIButton {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -97,7 +97,7 @@ class ZFRippleButton: UIButton {
         rippleView.layer.cornerRadius = corner
     }
     
-    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+    override public func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
         if trackTouchLocation {
             touchCenterLocation = touch.locationInView(self)
         } else {
@@ -137,12 +137,12 @@ class ZFRippleButton: UIButton {
         return super.beginTrackingWithTouch(touch, withEvent: event)
     }
     
-    override func cancelTrackingWithEvent(event: UIEvent?) {
+    override public func cancelTrackingWithEvent(event: UIEvent?) {
         super.cancelTrackingWithEvent(event)
         animateToNormal()
     }
     
-    override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
+    override public func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
         super.endTrackingWithTouch(touch, withEvent: event)
         animateToNormal()
     }
@@ -181,7 +181,7 @@ class ZFRippleButton: UIButton {
             }, completion: nil)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         setupRippleView()

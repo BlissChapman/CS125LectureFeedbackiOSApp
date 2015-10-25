@@ -51,5 +51,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>CFBundleDisplayName</key>
+	<string>Feedback</string>
 </dict>
 </plist>

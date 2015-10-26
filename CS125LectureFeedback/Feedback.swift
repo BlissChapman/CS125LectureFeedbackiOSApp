@@ -22,7 +22,7 @@ class Feedback {
     }
     
     /**
-     Indicates the internet connectivity status of the user's device.
+     Indicates the internet connectivity status of the user's device, abstracting away the nuisances of Apple's Reachability class.
      */
     private static var isConnectedToInternet: Bool {
         get {

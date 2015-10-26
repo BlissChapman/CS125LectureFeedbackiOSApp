@@ -19,9 +19,8 @@ class SubmitViewController: UIViewController {
     @IBOutlet weak var submitButton: UIUCButton!
     @IBOutlet weak var submitLoadingIndicator: UIActivityIndicatorView!
 
-    
+    //feedbackObject is set during the segue from the NetID View Controller and therefore is a non-nil Feedback object that must contain a valid net id and partner net id
     var feedbackObject: Feedback!
-    private var lastAnimationDistance: CGFloat!
     
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
@@ -32,13 +31,16 @@ class SubmitViewController: UIViewController {
     
     //MARK: UI
     private func configureUI() {
+        //configure the rating slider's appearance
         ratingSlider.maximumTrackTintColor = UIUCColor.BLUE
         ratingSlider.minimumTrackTintColor = UIUCColor.ORANGE
         ratingSlider.setThumbImage(UIImage(assetIdentifier: .VictoryShield), forState: .Normal)
         
+        //set the SubmitViewController class (self) as the text view's delegates
         comfortableTextView.delegate = self
         strugglingTextView.delegate = self
         
+        //configure the text view's appearance
         comfortableTextView.text = ""
         strugglingTextView.text = ""
         comfortableTextView.layer.borderColor = UIColor.grayColor().CGColor
@@ -50,12 +52,14 @@ class SubmitViewController: UIViewController {
     }
     
     @IBAction func submitButtonTapped(sender: UIUCButton) {
+        //as soon as the submit button is tapped, start animating the loading indicator and hide the submit button title
         submitLoadingIndicator.startAnimating()
         submitButton.setTitle("", forState: .Normal)
 
         //dismiss all keyboards
         view.endEditing(true)
         
+        //if for some unforeseen reason, the feedback object doesn't exist when submit is tapped, then throw up an alert
         guard feedbackObject != nil else {
             let alert = SCLAlertView()
             alert.showError("Error", subTitle: "Uh oh, we've encountered an unidentified error.  Please restart the app.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
@@ -64,20 +68,28 @@ class SubmitViewController: UIViewController {
             return
         }
         
+        //set the feedback object's understand, struggle, and rating fields to the newly determined values
         feedbackObject.understand = comfortableTextView.text
         feedbackObject.struggle = strugglingTextView.text
         feedbackObject.lectureRating = Int(ratingSlider.value)
         
+        //attempt to submit the feedbackObject to the database (option-click on submit to view more documentation)
         feedbackObject.submit { (retrieveStatus) -> Void in
+            //stop the loading symbol animation and reset the button title to Submit
             self.submitLoadingIndicator.stopAnimating()
             self.submitButton.setTitle("Submit", forState: .Normal)
+            
+            //initialize an instance of a custom alert that will be used to communicate the outcome of the submission attempt
             let alert = SCLAlertView()
 
             do {
-                let status = try retrieveStatus()
+                //if no error is thrown by the retrieve status method, then the attempt was successful
+                try retrieveStatus()
                 
+                //segue back to the net id view controller
                 self.navigationController?.popToRootViewControllerAnimated(true)
                 
+                //display a success message
                 alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
                 
             } catch Feedback.FeedbackError.Logical {
@@ -94,8 +106,8 @@ class SubmitViewController: UIViewController {
         }
     }
     
-    //MARK: Rating Slider
     @IBAction func ratingSliderChanged(sender: UISlider) {
+        //anytime the rating slider value changes, snap it to the nearest integer and update the label that displays its value
         ratingSlider.value = roundf(ratingSlider.value)
         ratingSliderLabel.text = NSString(format: "%2.0f", ratingSlider.value) as String
     }
@@ -105,6 +117,7 @@ class SubmitViewController: UIViewController {
 extension SubmitViewController: UITextViewDelegate {
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        //intercept the "done" keystroke and instead dismiss the keyboard
         if text == "\n" {
             textView.resignFirstResponder()
         }

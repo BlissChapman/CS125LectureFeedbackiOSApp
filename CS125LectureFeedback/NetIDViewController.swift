@@ -17,22 +17,18 @@ class NetIDViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var nextButton: UIUCButton!
     
+    //a constant structure that contains the name of all segues from the NetIDViewController - this is purely for readability
     private struct Segues {
         static let toOptionalFeedback = "toOptionalFeedback"
     }
     
-    var feedbackObject: Feedback!
+    private var feedbackObject: Feedback!
     
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         configureUI()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -50,13 +46,15 @@ class NetIDViewController: UIViewController {
     
     //MARK: UI
     private func configureUI() {
+        //disable the nextButton by default and add an observer on the enabled property that will appropriately update its background color every time the enabled status changes to indicate interactivity
         nextButton.enabled = false
         nextButton.addObserver(self, forKeyPath: "enabled", options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Initial], context: &buttonEnabledContext)
         
+        //set the NetIDViewController class (self) as the text field's delegates
         partnerIDTextField.delegate = self
         netIDTextField.delegate = self
         
-        //display the keyboard
+        //display the appropriate keyboard based on if there was a previously cached net id
         if let cachedID = Feedback.UsersID {
             netIDTextField.text = cachedID
             partnerIDTextField.becomeFirstResponder()
@@ -77,14 +75,17 @@ class NetIDViewController: UIViewController {
         // so that the next time the user opens the app they don't need to type as much
         Feedback.UsersID = netID
         
+        //instantiate a new instance of Feedback with the netID and partnerID we just retrieved from the user
         feedbackObject = Feedback(netID: netID, partnerID: partnerID)
         performSegueWithIdentifier(Segues.toOptionalFeedback, sender: nil)
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == Segues.toOptionalFeedback {
                 if let vc = segue.destinationViewController as? SubmitViewController {
+                    //set the feedbackObject property of the SubmitViewController class we are segueing to to the feedbackObject that contains the user's net ids
                     vc.feedbackObject = feedbackObject
                 }
             }
@@ -92,10 +93,10 @@ class NetIDViewController: UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return .LightContent
     }
     
-    //Any time the next button is enabled, change the background color appropriately
+    //Any time the "Next" button's enabled status changes, update the button's background color accordingly
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if context == &buttonEnabledContext {
@@ -111,6 +112,7 @@ class NetIDViewController: UIViewController {
         }
     }
     
+    //remove the key value observer when the class is deinitialized because this is UIUC and not Michigan 😉
     deinit {
         nextButton.removeObserver(self, forKeyPath: "enabled", context: &buttonEnabledContext)
     }
@@ -118,6 +120,7 @@ class NetIDViewController: UIViewController {
 
 extension NetIDViewController: UITextFieldDelegate {
     
+    //when the user hits next, dismiss the keyboard from one text field and bring the keyboard up on the next text field if appropriate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == netIDTextField {
             netIDTextField.resignFirstResponder()
@@ -129,7 +132,7 @@ extension NetIDViewController: UITextFieldDelegate {
         return true
     }
     
-    //only allow a submission attempt if certain conditions are met
+    //only enable the "Next" button/allow a submission attempt if certain conditions are met
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         guard let netID = netIDTextField.text where netID.isValidNetID() else {

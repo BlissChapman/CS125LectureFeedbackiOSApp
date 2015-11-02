@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class Feedback {
     /**
@@ -150,5 +151,30 @@ class Feedback {
         //perform the request
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         task.resume()
+    }
+    
+    
+    private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
+    /**
+    Attempts to save the feedback object in CoreData as a FeedbackItem.
+    
+    - Parameters:
+    - completion: handle this callback to determine the status of the save attempt by calling the retrieveStatus function.
+    */
+    func save() {
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("FeedbackItem", inManagedObjectContext: context) as! FeedbackItem
+        newItem.userID = yourNetID
+        newItem.partnerID = theirNetID
+        newItem.lectureRating = lectureRating
+        newItem.understandText = understand
+        newItem.strugglingText = struggle
+        newItem.date = NSDate()
+        
+        do {
+            try context.save()
+        } catch {
+            debugPrint(error)
+        }
     }
 }

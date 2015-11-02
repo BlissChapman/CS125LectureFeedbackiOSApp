@@ -73,6 +73,9 @@ class SubmitViewController: UIViewController {
         feedbackObject.struggle = strugglingTextView.text
         feedbackObject.lectureRating = Int(ratingSlider.value)
         
+        //save the new feedback submission for the history view
+        feedbackObject.save()
+        
         //attempt to submit the feedbackObject to the database (option-click on submit to view more documentation)
         feedbackObject.submit { (retrieveStatus) -> Void in
             //stop the loading symbol animation and reset the button title to Submit

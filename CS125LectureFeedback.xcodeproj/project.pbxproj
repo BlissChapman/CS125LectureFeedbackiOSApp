@@ -21,6 +21,11 @@
 		A5839FD41BD4A7CB00524E2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD31BD4A7CB00524E2C /* Model.swift */; };
 		A5839FD71BD4AAF300524E2C /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */; };
 		A5839FD91BD523BF00524E2C /* UIUCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD81BD523BF00524E2C /* UIUCButton.swift */; };
+		A5CE70C81BE7C97200780E15 /* FeedbackHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */; };
+		A5CE70CB1BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70C91BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift */; };
+		A5CE70CC1BE7C9F400780E15 /* FeedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */; };
+		A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */; };
+		A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,11 @@
 		A5839FD31BD4A7CB00524E2C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		A5839FD81BD523BF00524E2C /* UIUCButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUCButton.swift; sourceTree = "<group>"; };
+		A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedbackHistory.xcdatamodel; sourceTree = "<group>"; };
+		A5CE70C91BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedbackItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackItem.swift; sourceTree = "<group>"; };
+		A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackHistoryViewController.swift; sourceTree = "<group>"; };
+		A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackItemTableViewCell.swift; path = ../FeedbackItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +109,9 @@
 				A5839FBF1BD49BA800524E2C /* AppDelegate.swift */,
 				A5839FC11BD49BA800524E2C /* NetIDViewController.swift */,
 				A55201631BD55D8D00411155 /* SubmitViewController.swift */,
-				A55201611BD556E600411155 /* Feedback.swift */,
+				A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */,
 				A5839FC31BD49BA800524E2C /* Main.storyboard */,
+				A55201611BD556E600411155 /* Feedback.swift */,
 				A5839FD51BD4A7D300524E2C /* Supporting */,
 			);
 			path = CS125LectureFeedback;
@@ -113,10 +124,22 @@
 				A5839FC61BD49BA800524E2C /* Assets.xcassets */,
 				A5839FC81BD49BA800524E2C /* LaunchScreen.storyboard */,
 				A5839FCB1BD49BA800524E2C /* Info.plist */,
+				A5CE70CD1BE7CA2500780E15 /* History */,
 				A508B0B21BDAA90C00EB26D7 /* Utilities */,
 				A50D27B81BDD62EF00AB5F65 /* Frameworks */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		A5CE70CD1BE7CA2500780E15 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */,
+				A5CE70C91BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift */,
+				A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */,
+				A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */,
+			);
+			name = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,10 +215,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55201621BD556E700411155 /* Feedback.swift in Sources */,
+				A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */,
 				A55201641BD55D8D00411155 /* SubmitViewController.swift in Sources */,
 				A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */,
+				A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */,
+				A5CE70CB1BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift in Sources */,
+				A5CE70C81BE7C97200780E15 /* FeedbackHistory.xcdatamodeld in Sources */,
 				A50D27B71BDD62DA00AB5F65 /* Reachability.m in Sources */,
 				A5839FD21BD4A46B00524E2C /* NetIDTextField.swift in Sources */,
+				A5CE70CC1BE7C9F400780E15 /* FeedbackItem.swift in Sources */,
 				A5839FC21BD49BA800524E2C /* NetIDViewController.swift in Sources */,
 				A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */,
 				A5839FD91BD523BF00524E2C /* UIUCButton.swift in Sources */,
@@ -365,6 +393,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */,
+			);
+			currentVersion = A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */;
+			path = FeedbackHistory.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5839FB41BD49BA800524E2C /* Project object */;
 }

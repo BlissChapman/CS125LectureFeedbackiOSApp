@@ -11,6 +11,7 @@ import CoreData
 
 class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar! {
         didSet {
             navBar.delegate = self
@@ -49,6 +50,8 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         } catch let error as NSError {
             debugPrint(error)
         }
+        
+        configureUI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +60,11 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
     }
     
     //MARK: UI
+    private func configureUI() {
+        tableView.separatorColor = UIUCColor.BLUE
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+    }
+    
     @IBAction func doneTapped(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -72,7 +80,7 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
 
 extension FeedbackHistoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return tableView.frame.width / 2.0
+        return tableView.frame.width / 2.5
     }
 }
 
@@ -99,8 +107,8 @@ extension FeedbackHistoryViewController: UITableViewDataSource {
         cell.dateLabel.text = formatter.stringFromDate(item.date)
         
         cell.lectureRatingLabel.text = "\(item.lectureRating)"
-        cell.understandLabel.text = "Understand: \"\(item.understandText)\""
-        cell.strugglingLabel.text = "Struggling: \"\(item.strugglingText)\""
+        cell.understandTextView.text = "\(item.understandText ?? "")"
+        cell.strugglingTextView.text = "\(item.strugglingText ?? "")"
         
         return cell
     }

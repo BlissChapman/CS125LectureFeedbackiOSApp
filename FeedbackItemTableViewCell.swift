@@ -13,8 +13,8 @@ class FeedbackItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var partnerIDLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var understandLabel: UILabel!
-    @IBOutlet weak var strugglingLabel: UILabel!
+    @IBOutlet weak var understandTextView: UITextView!
+    @IBOutlet weak var strugglingTextView: UITextView!
     @IBOutlet weak var lectureRatingLabel: UILabel!
     
     
@@ -24,8 +24,8 @@ class FeedbackItemTableViewCell: UITableViewCell {
         
         partnerIDLabel.textColor = UIUCColor.BLUE
         dateLabel.textColor = UIUCColor.BLUE
-        understandLabel.textColor = UIUCColor.BLUE
-        strugglingLabel.textColor = UIUCColor.BLUE
+        understandTextView.textColor = UIUCColor.BLUE
+        understandTextView.textColor = UIUCColor.BLUE
         lectureRatingLabel.textColor = UIUCColor.BLUE
     }
 }

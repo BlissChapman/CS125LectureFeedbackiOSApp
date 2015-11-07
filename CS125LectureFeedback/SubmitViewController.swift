@@ -88,7 +88,7 @@ class SubmitViewController: UIViewController {
                 try retrieveStatus()
                 
                 //save the new feedback submission for the history view if the feedback was successful
-                feedbackObject.save()
+                self.feedbackObject.save()
                 
                 //segue back to the net id view controller
                 self.navigationController?.popToRootViewControllerAnimated(true)

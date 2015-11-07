@@ -72,9 +72,7 @@ class SubmitViewController: UIViewController {
         feedbackObject.understand = comfortableTextView.text
         feedbackObject.struggle = strugglingTextView.text
         feedbackObject.lectureRating = Int(ratingSlider.value)
-        
-        //save the new feedback submission for the history view
-        feedbackObject.save()
+
         
         //attempt to submit the feedbackObject to the database (option-click on submit to view more documentation)
         feedbackObject.submit { (retrieveStatus) -> Void in
@@ -88,6 +86,9 @@ class SubmitViewController: UIViewController {
             do {
                 //if no error is thrown by the retrieve status method, then the attempt was successful
                 try retrieveStatus()
+                
+                //save the new feedback submission for the history view if the feedback was successful
+                feedbackObject.save()
                 
                 //segue back to the net id view controller
                 self.navigationController?.popToRootViewControllerAnimated(true)

@@ -39,6 +39,6 @@ extension UIColor {
 extension String {
     //This is a barebones implementation until further information about what constitutes a valid net id presents itself.
     func isValidNetID() -> Bool {
-        return self.characters.count >= 2
+        return characters.count >= 2 && !characters.contains(" ")
     }
 }

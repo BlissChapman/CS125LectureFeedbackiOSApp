@@ -27,7 +27,7 @@ class NetIDViewController: UIViewController {
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureUI()
     }
     
@@ -132,19 +132,36 @@ extension NetIDViewController: UITextFieldDelegate {
         return true
     }
     
+    
     //only enable the "Next" button/allow a submission attempt if certain conditions are met
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        guard let netID = netIDTextField.text where netID.isValidNetID() else {
+        guard let netID = netIDTextField.text else {
             nextButton.enabled = false
             return true
         }
-        guard let partnerID = partnerIDTextField.text where partnerID.isValidNetID() else {
+        guard let partnerID = partnerIDTextField.text else {
+            nextButton.enabled = false
+            return true
+        }
+        guard let newText = textField.text?.stringByAppendingString(string) else {
             nextButton.enabled = false
             return true
         }
         
-        nextButton.enabled = true
+        if textField == netIDTextField {
+            nextButton.enabled = partnerID.isValidNetID() && newText.isValidNetID()
+        }
+        if textField == partnerIDTextField {
+            nextButton.enabled = netID.isValidNetID() && newText.isValidNetID()
+        }
+        
+        return true
+    }
+    
+    //if the text field is cleared, the button should be disabled
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        nextButton.enabled = false
         return true
     }
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class FeedbackItemTableViewCell: UITableViewCell {
-
     
     @IBOutlet weak var partnerIDLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -20,7 +19,6 @@ class FeedbackItemTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         
         partnerIDLabel.textColor = UIUCColor.BLUE
         dateLabel.textColor = UIUCColor.BLUE

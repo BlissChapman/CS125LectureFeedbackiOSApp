@@ -19,9 +19,7 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         }
     }
     
-    
     private let reuseIdentifier = "feedbackItemCell"
-    
     private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     lazy private var fetchedResultsController: NSFetchedResultsController = {
@@ -36,8 +34,6 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
             sectionNameKeyPath: nil,
             cacheName: nil)
         
-        frc.delegate = self
-        
         return frc
     }()
     
@@ -48,16 +44,15 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
+            let alert = SCLAlertView()
+            alert.showError("Error", subTitle: "Could not fetch your history.  Please close the history view and retry.", closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+
             debugPrint(error)
         }
         
         configureUI()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     //MARK: UI
     private func configureUI() {
@@ -69,12 +64,8 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
-    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle { return .LightContent }
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition { return .TopAttached }
 }
 
 
@@ -112,8 +103,4 @@ extension FeedbackHistoryViewController: UITableViewDataSource {
         
         return cell
     }
-}
-
-extension FeedbackHistoryViewController: NSFetchedResultsControllerDelegate {
-    
 }

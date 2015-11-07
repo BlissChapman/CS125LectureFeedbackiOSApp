@@ -61,6 +61,7 @@ class Feedback {
     
     //MARK: Networking
     private let URL = "http://cs125class.web.engr.illinois.edu/processfeedback.php"//"http://cs125class.web.engr.illinois.edu/feedback.php"
+    
     enum FeedbackError: ErrorType {
         case Logical
         case UndeterminedStatus
@@ -139,10 +140,9 @@ class Feedback {
                     return
                 }
                 
-                print(responseData)
+                //print(responseData)
                 let successful = responseData.containsString(self.yourNetID) && responseData.containsString(self.theirNetID) && statusCode == 200
                 callback(retrieveStatus: { return successful })
-
                 
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             })
@@ -174,6 +174,11 @@ class Feedback {
         do {
             try context.save()
         } catch {
+            let alert = SCLAlertView()
+            alert.addButton("Retry", action: { () -> Void in
+                self.save()
+            })
+            alert.showError("Save Failed", subTitle: "Failed to save this feedback in your history.", closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             debugPrint(error)
         }
     }

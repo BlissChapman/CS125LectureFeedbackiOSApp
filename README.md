@@ -1,5 +1,5 @@
 # Lecture Feedback
-This is the iOS version of the UIUC CS 125 Lecture Feedback web app developed as part of a research project. 
+The University of Illinois CS125 lecture feedback app accepts feedback on course content and permits students to view a history of their lecture participation.  Submitted feedback is used to monitor student progress, rapidly improve course content, and as a basis for research on educational methodology.
 
 ###Screenshots
 

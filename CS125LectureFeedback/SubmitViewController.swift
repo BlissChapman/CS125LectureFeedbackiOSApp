@@ -22,6 +22,10 @@ class SubmitViewController: UIViewController {
     //feedbackObject is set during the segue from the NetID View Controller and therefore is a non-nil Feedback object that must contain a valid net id and partner net id
     var feedbackObject: Feedback!
     
+    
+    private let successfulSegue = "successfulSubmission"
+
+    
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +95,8 @@ class SubmitViewController: UIViewController {
                 self.feedbackObject.save()
                 
                 //segue back to the net id view controller
-                self.navigationController?.popToRootViewControllerAnimated(true)
+                //self.navigationController?.popToRootViewControllerAnimated(true)
+                self.performSegueWithIdentifier(self.successfulSegue, sender: nil)
                 
                 //display a success message
                 alert.showSuccess("Success", subTitle: "Thank you \(self.feedbackObject.yourNetID) for registering your interactions with \(self.feedbackObject.theirNetID)!", closeButtonTitle: "Great!", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
@@ -116,6 +121,16 @@ class SubmitViewController: UIViewController {
         ratingSliderLabel.text = NSString(format: "%2.0f", ratingSlider.value) as String
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == successfulSegue {
+                if let vc = segue.destinationViewController as? NetIDViewController {
+                    vc.displayKeyboardAutomatically = false
+                }
+            }
+        }
+    }
 }
 
 extension SubmitViewController: UITextViewDelegate {

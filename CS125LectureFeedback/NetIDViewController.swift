@@ -17,6 +17,8 @@ class NetIDViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var nextButton: UIUCButton!
     
+    var displayKeyboardAutomatically = true
+    
     //a constant structure that contains the name of all segues from the NetIDViewController - this is purely for readability
     private struct Segues {
         static let toOptionalFeedback = "toOptionalFeedback"
@@ -29,19 +31,6 @@ class NetIDViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        
-        //if both the text fields already contain valid net ids, then there is no reason to display the keyboard - this will occur after a successful submission
-        if (partnerIDTextField.text ?? "").isValidNetID() {
-            partnerIDTextField.resignFirstResponder()
-        }
-        
-        if (netIDTextField.text ?? "").isValidNetID() {
-            netIDTextField.resignFirstResponder()
-        }
     }
     
     //MARK: UI
@@ -57,9 +46,9 @@ class NetIDViewController: UIViewController {
         //display the appropriate keyboard based on if there was a previously cached net id
         if let cachedID = Feedback.UsersID {
             netIDTextField.text = cachedID
-            partnerIDTextField.becomeFirstResponder()
+            if displayKeyboardAutomatically { partnerIDTextField.becomeFirstResponder() }
         } else {
-            netIDTextField.becomeFirstResponder()
+            if displayKeyboardAutomatically { netIDTextField.becomeFirstResponder() }
         }
     }
     

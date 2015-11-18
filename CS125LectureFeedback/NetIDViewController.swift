@@ -56,11 +56,11 @@ class NetIDViewController: UIViewController {
         }
     }
     
-    @IBAction func nextButtonTapped(sender: UIUCButton) {
+    @IBAction private func nextButtonTapped(sender: UIUCButton) {
         guard let netID = netIDTextField.text where netID.isValidNetID() else {
             return
         }
-        guard let partnerID = partnerIDTextField.text where netID.isValidNetID() else {
+        guard let partnerID = partnerIDTextField.text where partnerID.isValidNetID() else {
             return
         }
         
@@ -113,8 +113,18 @@ class NetIDViewController: UIViewController {
         if let qrScanner = segue.sourceViewController as? QRScannerViewController {
             if let partnerID = qrScanner.validPartnerID {
                 partnerIDTextField.text = partnerID
+                nextButton.enabled = nextButtonEnabled()
             }
         }
+    }
+    
+    private func nextButtonEnabled() -> Bool {
+        if let partnerID = partnerIDTextField.text {
+            if let netID = netIDTextField.text {
+                return netID.isValidNetID() && partnerID.isValidNetID()
+            }
+        }
+        return false
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -157,30 +167,25 @@ extension NetIDViewController: UITextFieldDelegate {
         return true
     }
     
-    
     //only enable the "Next" button/allow a submission attempt if certain conditions are met
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        guard let netID = netIDTextField.text else {
-            nextButton.enabled = false
-            return true
-        }
-        guard let partnerID = partnerIDTextField.text else {
-            nextButton.enabled = false
-            return true
-        }
-        guard let newText = textField.text?.stringByAppendingString(string) else {
-            nextButton.enabled = false
-            return true
-        }
-        
-        if textField == netIDTextField {
-            nextButton.enabled = partnerID.isValidNetID() && newText.isValidNetID()
-        }
-        if textField == partnerIDTextField {
-            nextButton.enabled = netID.isValidNetID() && newText.isValidNetID()
+        if let netID = netIDTextField.text {
+            if let partnerID = partnerIDTextField.text {
+                if let newText = textField.text?.stringByAppendingString(string) {
+                    
+                    switch textField {
+                    case netIDTextField: nextButton.enabled = partnerID.isValidNetID() && newText.isValidNetID()
+                    case partnerIDTextField: nextButton.enabled = netID.isValidNetID() && newText.isValidNetID()
+                    default: break
+                    }
+                    return true
+                    
+                }
+            }
         }
         
+        nextButton.enabled = false
         return true
     }
     

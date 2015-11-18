@@ -71,7 +71,7 @@ class QRScannerViewController: UIViewController, UINavigationBarDelegate, UIBarP
         performSegueWithIdentifier("unwindSegue", sender: nil)
     }
     
-    @IBAction func closeTapped(sender: UIBarButtonItem) {
+    @IBAction private func closeTapped(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

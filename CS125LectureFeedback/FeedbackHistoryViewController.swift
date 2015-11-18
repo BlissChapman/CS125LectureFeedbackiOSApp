@@ -60,7 +60,7 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
     }
     
-    @IBAction func doneTapped(sender: UIBarButtonItem) {
+    @IBAction private func doneTapped(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

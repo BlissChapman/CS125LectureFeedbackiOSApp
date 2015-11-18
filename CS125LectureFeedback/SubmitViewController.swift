@@ -55,7 +55,7 @@ class SubmitViewController: UIViewController {
         strugglingTextView.tintColor = UIUCColor.ORANGE
     }
     
-    @IBAction func submitButtonTapped(sender: UIUCButton) {
+    @IBAction private func submitButtonTapped(sender: UIUCButton) {
         //as soon as the submit button is tapped, start animating the loading indicator and hide the submit button title
         submitLoadingIndicator.startAnimating()
         submitButton.setTitle("", forState: .Normal)
@@ -115,7 +115,7 @@ class SubmitViewController: UIViewController {
         }
     }
     
-    @IBAction func ratingSliderChanged(sender: UISlider) {
+    @IBAction private func ratingSliderChanged(sender: UISlider) {
         //anytime the rating slider value changes, snap it to the nearest integer and update the label that displays its value
         ratingSlider.value = roundf(ratingSlider.value)
         ratingSliderLabel.text = NSString(format: "%2.0f", ratingSlider.value) as String

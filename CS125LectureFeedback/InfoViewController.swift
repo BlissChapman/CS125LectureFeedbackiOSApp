@@ -45,20 +45,20 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         appDescriptionTextView.scrollRangeToVisible(NSRange(location:0, length:0))
         
         //generate qr code based on the user's cached net id
-        let qrCode = QRCodeHelper.generateQRCode(forString: Feedback.UsersID ?? "Use the app once first 🙃")
+        let qrCode = QRCodeHelper.generateQRCode(forString: Feedback.UsersID ?? "UseAppOnce1st")
         
         switch qrCode {
         case .Success(qrCode: let qrCode):
             qrCodeImageView.image = qrCode
         case .Error(message: let message):
             let errorAlert = SCLAlertView()
-            errorAlert.showSuccess("Error", subTitle: message, closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            errorAlert.showError("Error", subTitle: message, closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
         }
         
         if let id = Feedback.UsersID {
-            qrCodeLabel.text = "Your partner can scan this code to copy your net id: \(id)"
+            qrCodeLabel.text = "Your partner can scan this code to add you as their partner: \(id)"
         } else {
-            qrCodeLabel.text = "Your partner can scan this code to copy your net id."
+            qrCodeLabel.text = "Your partner can scan this code to add you as their partner."
         }
     }
     
@@ -73,7 +73,7 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
             errorAlert.addButton("Retry", action: { () -> Void in
                 self.viewSourceCodeTapped(sender)
             })
-            errorAlert.showSuccess("Error", subTitle: "Could not create a url to load.  Please retry.", closeButtonTitle: "Cancel", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            errorAlert.showError("Error", subTitle: "Could not create a url to load.  Please retry.", closeButtonTitle: "Cancel", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             return
         }
         
@@ -93,13 +93,13 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         }
     }
     
-    @IBAction func sendFeedbackTapped(sender: UIUCButton) {
+    @IBAction private func sendFeedbackTapped(sender: UIUCButton) {
         guard MFMailComposeViewController.canSendMail() else {
             let errorAlert = SCLAlertView()
             errorAlert.addButton("Retry", action: { () -> Void in
                 self.sendFeedbackTapped(sender)
             })
-            errorAlert.showSuccess("Error", subTitle: "This feature is not currently available on your device.", closeButtonTitle: "Cancel", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            errorAlert.showError("Error", subTitle: "This feature is not currently available on your device.", closeButtonTitle: "Cancel", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             return
         }
         

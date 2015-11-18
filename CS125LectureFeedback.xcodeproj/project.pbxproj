@@ -27,6 +27,7 @@
 		A5CE70CC1BE7C9F400780E15 /* FeedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */; };
 		A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */; };
 		A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */; };
+		A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackItem.swift; sourceTree = "<group>"; };
 		A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackHistoryViewController.swift; sourceTree = "<group>"; };
 		A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackItemTableViewCell.swift; path = ../FeedbackItemTableViewCell.swift; sourceTree = "<group>"; };
+		A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		A5839FD51BD4A7D300524E2C /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */,
 				A5839FD31BD4A7CB00524E2C /* Model.swift */,
 				A55201611BD556E600411155 /* Feedback.swift */,
 				A5839FC61BD49BA800524E2C /* Assets.xcassets */,
@@ -240,6 +243,7 @@
 				A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */,
 				A5839FD91BD523BF00524E2C /* UIUCButton.swift in Sources */,
 				A55201661BD5787500411155 /* Utilities.swift in Sources */,
+				A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */,
 				A5839FD71BD4AAF300524E2C /* ZFRippleButton.swift in Sources */,
 				A5839FD41BD4A7CB00524E2C /* Model.swift in Sources */,
 			);

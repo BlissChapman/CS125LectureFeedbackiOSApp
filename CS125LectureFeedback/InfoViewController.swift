@@ -12,6 +12,7 @@ import SafariServices
 
 class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate {
     
+    @IBOutlet weak var appDescriptionTextView: UITextView!
     @IBOutlet weak var navBar: UINavigationBar! {
         didSet {
             navBar.delegate = self
@@ -20,6 +21,9 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
     }
     @IBOutlet weak var sendFeedbackButton: UIUCButton!
     @IBOutlet weak var viewSourceCodeButton: UIUCButton!
+    
+    @IBOutlet weak var qrCodeImageView: UIImageView!
+    @IBOutlet weak var qrCodeLabel: UILabel!
     
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
@@ -32,12 +36,30 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
     private func configureUI() {
         sendFeedbackButton.titleLabel?.lineBreakMode = .ByWordWrapping
         sendFeedbackButton.titleLabel?.textAlignment = .Center
-        sendFeedbackButton.setTitle("View Source Code", forState: .Normal)
+        sendFeedbackButton.setTitle("Send Comment", forState: .Normal)
         
         viewSourceCodeButton.titleLabel?.lineBreakMode = .ByWordWrapping
         viewSourceCodeButton.titleLabel?.textAlignment = .Center
-        viewSourceCodeButton.setTitle("Send Comment", forState: .Normal)
-
+        viewSourceCodeButton.setTitle("View Source Code", forState: .Normal)
+        
+        appDescriptionTextView.setContentOffset(CGPointZero, animated: false)
+        
+        //generate qr code based on the user's cached net id
+        let qrCode = QRCodeHelper.generateQRCode(forString: Feedback.UsersID ?? "Use the app once first 🙃")
+        
+        switch qrCode {
+        case .Success(qrCode: let qrCode):
+            qrCodeImageView.image = qrCode
+        case .Error(message: let message):
+            let errorAlert = SCLAlertView()
+            errorAlert.showSuccess("Error", subTitle: message, closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+        }
+        
+        if let id = Feedback.UsersID {
+            qrCodeLabel.text = "Your partner can scan this code to copy your net id: \(id)"
+        } else {
+            qrCodeLabel.text = "Your partner can scan this code to copy your net id."
+        }
     }
     
     

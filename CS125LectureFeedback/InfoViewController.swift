@@ -19,10 +19,25 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         }
     }
     @IBOutlet weak var sendFeedbackButton: UIUCButton!
+    @IBOutlet weak var viewSourceCodeButton: UIUCButton!
     
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureUI()
+    }
+    
+    //MARK: UI
+    private func configureUI() {
+        sendFeedbackButton.titleLabel?.lineBreakMode = .ByWordWrapping
+        sendFeedbackButton.titleLabel?.textAlignment = .Center
+        sendFeedbackButton.setTitle("View Source Code", forState: .Normal)
+        
+        viewSourceCodeButton.titleLabel?.lineBreakMode = .ByWordWrapping
+        viewSourceCodeButton.titleLabel?.textAlignment = .Center
+        viewSourceCodeButton.setTitle("Send Comment", forState: .Normal)
+
     }
     
     
@@ -90,37 +105,7 @@ extension InfoViewController: SFSafariViewControllerDelegate {
 extension InfoViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
-        controller.dismissViewControllerAnimated(true, completion: nil)
-        
-        guard error == nil else {
-            debugPrint(error)
-            //displayFailedFeedbackMessage()
-            return
-        }
-        
-        /*
-        switch result.rawValue {
-        case MFMailComposeResultSent.rawValue:
-            let thankYouAlert = SCLAlertView()
-            thankYouAlert.showSuccess("Thank You", subTitle: "Your feedback will be carefully read.  Thank you for taking the time.", closeButtonTitle: "Cancel", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
-            presentViewController(thankYouAlert, animated: true, completion: nil)
-            
-        case MFMailComposeResultFailed.rawValue:
-            displayFailedFeedbackMessage()
-            
-        default: break
-        }
-*/
+        controller.dismissViewControllerAnimated(false, completion: nil)
     }
-    
-    /*
-    private func displayFailedFeedbackMessage() {
-        let errorAlert = SCLAlertView()
-        errorAlert.addButton("Retry", action: { () -> Void in
-            self.sendFeedbackTapped(self.sendFeedbackButton)
-        })
-        errorAlert.showSuccess("Error", subTitle: "Your feedback failed to send.  Would you like to retry?", closeButtonTitle: "Cancel", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
-    }
-*/
 }
 

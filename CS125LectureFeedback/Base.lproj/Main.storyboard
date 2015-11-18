@@ -819,7 +819,7 @@
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do2-5l-AyA">
-                                <rect key="frame" x="20" y="74" width="560" height="334.5"/>
+                                <rect key="frame" x="20" y="74" width="560" height="428"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">The University of Illinois CS125: Lecture Feedback app accepts feedback on course content and permits students to view a history of their lecture participation.  Submitted feedback is used to monitor student progress, rapidly improve course content, and as a basis for research on educational methodology.</string>
@@ -829,7 +829,7 @@
                                 <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVm-xb-zha" customClass="UIUCButton" customModule="CS125LectureFeedback" customModuleProvider="target">
-                                <rect key="frame" x="75" y="493.5" width="450" height="66.5"/>
+                                <rect key="frame" x="330" y="510" width="240" height="60"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.21176470589999999" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -850,14 +850,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWg-YJ-lnq" customClass="UIUCButton" customModule="CS125LectureFeedback" customModuleProvider="target">
-                                <rect key="frame" x="75" y="418.5" width="450" height="67"/>
+                                <rect key="frame" x="30" y="510" width="240" height="60"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.21176470589999999" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wWg-YJ-lnq" secondAttribute="height" multiplier="1:1" id="iqr-o1-4qt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                <state key="normal" title="Send Feedback">
+                                <state key="normal" title="Send Comment">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -877,19 +877,22 @@
                             <constraint firstItem="NVm-xb-zha" firstAttribute="top" secondItem="wWg-YJ-lnq" secondAttribute="bottom" constant="8" symbolic="YES" id="0Xu-Cy-aVF"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="height" secondItem="XrL-qR-U89" secondAttribute="height" multiplier="1:8" id="4QY-9H-KiW"/>
                             <constraint firstItem="NVm-xb-zha" firstAttribute="centerX" secondItem="XrL-qR-U89" secondAttribute="centerX" id="5n0-hC-mLS"/>
+                            <constraint firstItem="7wk-ES-hKz" firstAttribute="top" secondItem="wWg-YJ-lnq" secondAttribute="bottom" constant="30" id="6GB-PI-W57"/>
                             <constraint firstItem="NVm-xb-zha" firstAttribute="leading" secondItem="wWg-YJ-lnq" secondAttribute="trailing" constant="8" symbolic="YES" id="84y-xC-116"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="height" secondItem="XrL-qR-U89" secondAttribute="width" multiplier="1:2" id="95t-mh-gZK"/>
                             <constraint firstItem="7wk-ES-hKz" firstAttribute="top" secondItem="NVm-xb-zha" secondAttribute="bottom" constant="20" id="9AR-fX-DLQ"/>
                             <constraint firstAttribute="trailing" secondItem="RLW-v8-Hdq" secondAttribute="trailing" id="9Sr-8L-hVA"/>
                             <constraint firstItem="do2-5l-AyA" firstAttribute="top" secondItem="fUC-WS-BJA" secondAttribute="bottom" constant="63" id="9go-GE-zsq"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="top" secondItem="do2-5l-AyA" secondAttribute="bottom" constant="10" id="Agi-SM-irl"/>
+                            <constraint firstItem="wWg-YJ-lnq" firstAttribute="top" secondItem="do2-5l-AyA" secondAttribute="bottom" constant="8" symbolic="YES" id="AxG-LM-M6U"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="centerX" secondItem="XrL-qR-U89" secondAttribute="centerX" id="L0P-gQ-6Bj"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="trailing" secondItem="XrL-qR-U89" secondAttribute="centerX" constant="-10" id="LCK-9S-bz2"/>
-                            <constraint firstItem="7wk-ES-hKz" firstAttribute="top" secondItem="NVm-xb-zha" secondAttribute="bottom" constant="40" id="Ltr-v8-xsZ"/>
+                            <constraint firstItem="7wk-ES-hKz" firstAttribute="top" secondItem="NVm-xb-zha" secondAttribute="bottom" constant="30" id="Ltr-v8-xsZ"/>
                             <constraint firstItem="NVm-xb-zha" firstAttribute="centerX" secondItem="wWg-YJ-lnq" secondAttribute="centerX" id="NrP-S8-Bbo"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="height" secondItem="XrL-qR-U89" secondAttribute="height" multiplier="1:10" id="OHX-ER-vIz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NVm-xb-zha" secondAttribute="trailing" id="Oi9-o3-Rw0"/>
                             <constraint firstItem="NVm-xb-zha" firstAttribute="height" secondItem="wWg-YJ-lnq" secondAttribute="height" id="PoJ-ov-3K2"/>
+                            <constraint firstItem="wWg-YJ-lnq" firstAttribute="leading" secondItem="XrL-qR-U89" secondAttribute="leadingMargin" constant="10" id="Rd9-12-2cE"/>
                             <constraint firstItem="do2-5l-AyA" firstAttribute="top" secondItem="RLW-v8-Hdq" secondAttribute="bottom" constant="10" id="SMW-wS-6gA"/>
                             <constraint firstItem="do2-5l-AyA" firstAttribute="leading" secondItem="XrL-qR-U89" secondAttribute="leadingMargin" id="SvV-7h-KJS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NVm-xb-zha" secondAttribute="trailing" id="Ugk-c0-Kwq"/>
@@ -908,10 +911,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="NVm-xb-zha" secondAttribute="trailing" id="dVM-o4-ay1"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="leading" secondItem="XrL-qR-U89" secondAttribute="leadingMargin" id="e0i-lp-QSF"/>
                             <constraint firstItem="NVm-xb-zha" firstAttribute="width" secondItem="NVm-xb-zha" secondAttribute="height" multiplier="3:1" id="eUI-7H-Wge"/>
+                            <constraint firstItem="wWg-YJ-lnq" firstAttribute="height" secondItem="XrL-qR-U89" secondAttribute="height" multiplier="1:10" id="i2d-Fm-s7P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NVm-xb-zha" secondAttribute="trailing" constant="10" id="ipp-8h-ldg"/>
                             <constraint firstItem="7wk-ES-hKz" firstAttribute="top" secondItem="do2-5l-AyA" secondAttribute="bottom" constant="8" symbolic="YES" id="jFi-nx-0dh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="wWg-YJ-lnq" secondAttribute="leading" id="mpV-CI-9wb"/>
                             <constraint firstItem="NVm-xb-zha" firstAttribute="width" secondItem="wWg-YJ-lnq" secondAttribute="width" id="nV0-PA-hUm"/>
                             <constraint firstItem="RLW-v8-Hdq" firstAttribute="leading" secondItem="XrL-qR-U89" secondAttribute="leading" id="p8j-nb-q2g"/>
+                            <constraint firstItem="wWg-YJ-lnq" firstAttribute="width" secondItem="XrL-qR-U89" secondAttribute="width" multiplier="1:2.5" id="q1L-rW-VNM"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="width" secondItem="wWg-YJ-lnq" secondAttribute="height" multiplier="1:1" id="q1n-7k-PSo"/>
                             <constraint firstItem="wWg-YJ-lnq" firstAttribute="top" secondItem="do2-5l-AyA" secondAttribute="bottom" constant="10" id="r36-M2-N2Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="do2-5l-AyA" secondAttribute="trailing" id="tnr-hE-f8E"/>
@@ -924,18 +930,29 @@
                                 <exclude reference="4QY-9H-KiW"/>
                                 <exclude reference="95t-mh-gZK"/>
                                 <exclude reference="Agi-SM-irl"/>
+                                <exclude reference="L0P-gQ-6Bj"/>
                                 <exclude reference="LCK-9S-bz2"/>
                                 <exclude reference="OHX-ER-vIz"/>
                                 <exclude reference="Ul2-cp-7hR"/>
                                 <exclude reference="Vrz-KC-Rkr"/>
                                 <exclude reference="Xb1-Z8-C87"/>
                                 <exclude reference="Xr8-Hr-9wI"/>
+                                <exclude reference="Y3y-lX-iPR"/>
                                 <exclude reference="a2r-YX-az3"/>
+                                <exclude reference="cNX-O4-AQA"/>
                                 <exclude reference="e0i-lp-QSF"/>
                                 <exclude reference="mpV-CI-9wb"/>
                                 <exclude reference="q1n-7k-PSo"/>
+                                <exclude reference="r36-M2-N2Y"/>
+                                <exclude reference="9AR-fX-DLQ"/>
+                                <exclude reference="VYy-Fy-TKh"/>
+                                <exclude reference="Xrg-cI-4FH"/>
+                                <exclude reference="jFi-nx-0dh"/>
+                                <exclude reference="zbS-O0-cph"/>
+                                <exclude reference="0Xu-Cy-aVF"/>
                                 <exclude reference="5n0-hC-mLS"/>
                                 <exclude reference="84y-xC-116"/>
+                                <exclude reference="NrP-S8-Bbo"/>
                                 <exclude reference="Oi9-o3-Rw0"/>
                                 <exclude reference="Ugk-c0-Kwq"/>
                                 <exclude reference="Xf0-sN-RD3"/>
@@ -943,17 +960,13 @@
                                 <exclude reference="dVM-o4-ay1"/>
                                 <exclude reference="eUI-7H-Wge"/>
                                 <exclude reference="nV0-PA-hUm"/>
-                                <exclude reference="9AR-fX-DLQ"/>
-                                <exclude reference="VYy-Fy-TKh"/>
-                                <exclude reference="Xrg-cI-4FH"/>
-                                <exclude reference="jFi-nx-0dh"/>
-                                <exclude reference="zbS-O0-cph"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="navBar" destination="RLW-v8-Hdq" id="btW-Qh-CRW"/>
                         <outlet property="sendFeedbackButton" destination="wWg-YJ-lnq" id="UCI-Y2-nrT"/>
+                        <outlet property="viewSourceCodeButton" destination="NVm-xb-zha" id="o3i-Fd-jgJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QF3-Wh-M4K" userLabel="First Responder" sceneMemberID="firstResponder"/>

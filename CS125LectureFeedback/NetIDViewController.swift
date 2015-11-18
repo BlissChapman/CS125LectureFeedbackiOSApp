@@ -16,12 +16,14 @@ class NetIDViewController: UIViewController {
     @IBOutlet weak var netIDTextField: NetIDTextField!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var nextButton: UIUCButton!
+    @IBOutlet weak var qrScanButton: UIButton!
     
     var displayKeyboardAutomatically = true
     
     //a constant structure that contains the name of all segues from the NetIDViewController - this is purely for readability
     private struct Segues {
         static let toOptionalFeedback = "toOptionalFeedback"
+        static let toScanner = "displayScanner"
     }
     
     private var feedbackObject: Feedback!
@@ -38,6 +40,8 @@ class NetIDViewController: UIViewController {
         //disable the nextButton by default and add an observer on the enabled property that will appropriately update its background color every time the enabled status changes to indicate interactivity
         nextButton.enabled = false
         nextButton.addObserver(self, forKeyPath: "enabled", options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Initial], context: &buttonEnabledContext)
+        
+        qrScanButton.tintColor = UIUCColor.BLUE
         
         //set the NetIDViewController class (self) as the text field's delegates
         partnerIDTextField.delegate = self
@@ -69,6 +73,30 @@ class NetIDViewController: UIViewController {
         performSegueWithIdentifier(Segues.toOptionalFeedback, sender: nil)
     }
     
+    @IBAction private func scanButtonTapped(sender: UIButton) {
+        //dismiss text fields keyboards
+        netIDTextField.resignFirstResponder()
+        partnerIDTextField.resignFirstResponder()
+        
+        //check if the device has a camera
+        guard UIImagePickerController.isSourceTypeAvailable(.Camera) else {
+            let alert = SCLAlertView()
+            alert.showError("Unavailable", subTitle: "Your device does not have a camera.", closeButtonTitle: "Close", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            return
+        }
+        
+        //check if the user has granted us permission to use the camera
+        guard QRCodeHelper.cameraAccessIsAllowed() else {
+            let alert = SCLAlertView()
+            alert.addButton("Open Settings", action: { () -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            })
+            alert.showError("Unavailable", subTitle: "To access this feature, please allow us to access your camera.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            return
+        }
+        
+        performSegueWithIdentifier(Segues.toScanner, sender: nil)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
@@ -77,6 +105,14 @@ class NetIDViewController: UIViewController {
                     //set the feedbackObject property of the SubmitViewController class we are segueing to to the feedbackObject that contains the user's net ids
                     vc.feedbackObject = feedbackObject
                 }
+            }
+        }
+    }
+    
+    @IBAction func unwindToNetIDViewController(segue:UIStoryboardSegue) {
+        if let qrScanner = segue.sourceViewController as? QRScannerViewController {
+            if let partnerID = qrScanner.validPartnerID {
+                partnerIDTextField.text = partnerID
             }
         }
     }

@@ -113,9 +113,13 @@ class NetIDViewController: UIViewController {
         if let qrScanner = segue.sourceViewController as? QRScannerViewController {
             if let partnerID = qrScanner.validPartnerID {
                 partnerIDTextField.text = partnerID
-                nextButton.enabled = nextButtonEnabled()
+            }
+        } else if let feedbackHistory = segue.sourceViewController as? FeedbackHistoryViewController {
+            if let partnerID = feedbackHistory.selectedPartnerID {
+                partnerIDTextField.text = partnerID
             }
         }
+        nextButton.enabled = nextButtonEnabled()
     }
     
     private func nextButtonEnabled() -> Bool {

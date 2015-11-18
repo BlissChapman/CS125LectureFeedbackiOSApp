@@ -19,6 +19,7 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         }
     }
     
+    var selectedPartnerID: String?
     private let reuseIdentifier = "feedbackItemCell"
     private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
@@ -72,6 +73,13 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
 extension FeedbackHistoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return tableView.frame.width / 2.5
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let item = fetchedResultsController.objectAtIndexPath(indexPath) as! FeedbackItem
+
+        selectedPartnerID = item.partnerID
+        performSegueWithIdentifier("unwindFromHistory", sender: nil)
     }
 }
 

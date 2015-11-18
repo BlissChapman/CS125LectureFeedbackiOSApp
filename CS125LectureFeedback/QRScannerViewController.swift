@@ -65,7 +65,6 @@ class QRScannerViewController: UIViewController, UINavigationBarDelegate, UIBarP
         }
         
         session.stopRunning()
-        //play beep
 
         validPartnerID = value
         performSegueWithIdentifier("unwindSegue", sender: nil)

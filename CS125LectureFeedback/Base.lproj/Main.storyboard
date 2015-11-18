@@ -21,8 +21,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="*required" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KjR-Ua-Bch" customClass="NetIDTextField" customModule="CS125LectureFeedback" customModuleProvider="target">
-                                <rect key="frame" x="20" y="189" width="560" height="35"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="*required (tap + to scan)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KjR-Ua-Bch" customClass="NetIDTextField" customModule="CS125LectureFeedback" customModuleProvider="target">
+                                <rect key="frame" x="20" y="188.5" width="560" height="35"/>
                                 <animations/>
                                 <color key="tintColor" red="0.98431372549999996" green="0.21176470589999999" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -36,7 +36,7 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                        <real key="value" value="15"/>
+                                        <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
@@ -53,7 +53,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GS9-N6-idU">
-                                <rect key="frame" x="20" y="39" width="560" height="44"/>
+                                <rect key="frame" x="20" y="39" width="560" height="44.5"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -63,26 +63,26 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBv-Vk-vYJ">
-                                <rect key="frame" x="20" y="224" width="560" height="44"/>
+                                <rect key="frame" x="20" y="223.5" width="560" height="44.5"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwe-uk-7aT">
-                                <rect key="frame" x="20" y="83" width="60" height="21"/>
+                                <rect key="frame" x="20" y="83.5" width="60" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.11372549019607843" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partner's Net-ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj6-ir-87H">
-                                <rect key="frame" x="20" y="160" width="139" height="21"/>
+                                <rect key="frame" x="20" y="160" width="139" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.11372549019607843" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IY-Q5-JqJ" customClass="UIUCButton" customModule="CS125LectureFeedback" customModuleProvider="target">
-                                <rect key="frame" x="20" y="239" width="117" height="39"/>
+                                <rect key="frame" x="20" y="238.5" width="117" height="39"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.21176470589999999" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -121,6 +121,14 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vq-1j-Vkr">
+                                <rect key="frame" x="550" y="195" width="22" height="22"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="scanButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nt5-Rv-r5a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -173,6 +181,8 @@
                             <constraint firstItem="pBv-Vk-vYJ" firstAttribute="top" secondItem="KjR-Ua-Bch" secondAttribute="bottom" id="qgB-kT-yGv"/>
                             <constraint firstItem="bj6-ir-87H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rLl-Ee-3Ce"/>
                             <constraint firstItem="GIU-d3-cCa" firstAttribute="leading" secondItem="Wwe-uk-7aT" secondAttribute="trailing" constant="8" symbolic="YES" id="sgD-ZS-7pz"/>
+                            <constraint firstItem="3vq-1j-Vkr" firstAttribute="centerY" secondItem="KjR-Ua-Bch" secondAttribute="centerY" id="umC-eb-rcb"/>
+                            <constraint firstItem="3vq-1j-Vkr" firstAttribute="trailing" secondItem="KjR-Ua-Bch" secondAttribute="trailing" constant="-8" id="urV-TO-bKx"/>
                             <constraint firstItem="jtl-FO-Hic" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wRO-S4-DA4"/>
                             <constraint firstItem="1IY-Q5-JqJ" firstAttribute="top" secondItem="pBv-Vk-vYJ" secondAttribute="bottom" id="x4o-oV-tnR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pBv-Vk-vYJ" secondAttribute="trailing" id="xdW-sB-7sm"/>
@@ -210,6 +220,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Lecture Feedback" id="8G4-3Z-O7S">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Nhi-Mv-PC2"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="g92-Dl-BiD">
@@ -234,17 +245,69 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navBar" destination="8G4-3Z-O7S" id="7u6-j8-Nd9"/>
                         <outlet property="netIDTextField" destination="GIU-d3-cCa" id="DrK-fN-4AQ"/>
                         <outlet property="nextButton" destination="1IY-Q5-JqJ" id="Zaf-td-qlE"/>
                         <outlet property="partnerIDTextField" destination="KjR-Ua-Bch" id="Xwi-pL-3a7"/>
+                        <outlet property="qrScanButton" destination="3vq-1j-Vkr" id="nAS-Y1-Ty5"/>
                         <segue destination="Rhe-ex-K7l" kind="show" identifier="toOptionalFeedback" id="8hL-pU-CIm"/>
+                        <segue destination="BxH-jK-CBA" kind="presentation" identifier="displayScanner" id="AV1-Gn-a9D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1087" y="357"/>
+        </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="iVI-h0-kfq">
+            <objects>
+                <viewController id="BxH-jK-CBA" customClass="QRScannerViewController" customModule="CS125LectureFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DSW-Q4-KV2"/>
+                        <viewControllerLayoutGuide type="bottom" id="gbH-8z-RP9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zXD-2m-Txy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" verticalHuggingPriority="1000" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiF-73-Lrz">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <color key="barTintColor" red="0.035294117649999998" green="0.078431372550000003" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Scanner" id="YCN-BM-ciU">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" style="done" id="2Y0-87-93n">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeTapped:" destination="BxH-jK-CBA" id="h65-xW-Eeq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CiF-73-Lrz" secondAttribute="trailing" id="XTU-Ii-iwB"/>
+                            <constraint firstItem="CiF-73-Lrz" firstAttribute="top" secondItem="DSW-Q4-KV2" secondAttribute="bottom" id="foB-m1-Xau"/>
+                            <constraint firstItem="CiF-73-Lrz" firstAttribute="leading" secondItem="zXD-2m-Txy" secondAttribute="leading" id="yxl-aA-eG0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navBar" destination="CiF-73-Lrz" id="F2l-KD-l9s"/>
+                        <segue destination="690-BK-LGt" kind="unwind" identifier="unwindSegue" unwindAction="unwindToNetIDViewController:" id="6Dc-Lr-aZD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8u8-fg-Gk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="690-BK-LGt" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="1045"/>
         </scene>
         <!--Lecture Feedback-->
         <scene sceneID="chq-Yi-b46">
@@ -808,7 +871,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Feedback History" id="AkI-4I-zRd">
+                                    <navigationItem title="Info" id="AkI-4I-zRd">
                                         <barButtonItem key="leftBarButtonItem" title="Close" style="done" id="Q6w-iU-Yja">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -824,7 +887,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">The University of Illinois CS125: Lecture Feedback app accepts feedback on course content and permits students to view a history of their lecture participation.  Submitted feedback is used to monitor student progress, rapidly improve course content, and as a basis for research on educational methodology.</string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
                             </textView>
@@ -881,7 +944,7 @@
                                 <rect key="frame" x="75" y="463" width="450" height="17"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eaw-Fi-MnH">

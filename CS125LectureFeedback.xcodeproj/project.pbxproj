@@ -28,6 +28,7 @@
 		A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */; };
 		A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */; };
 		A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */; };
+		A5DD5C911BFC293200136292 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C901BFC293200136292 /* QRScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackHistoryViewController.swift; sourceTree = "<group>"; };
 		A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackItemTableViewCell.swift; path = ../FeedbackItemTableViewCell.swift; sourceTree = "<group>"; };
 		A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeHelper.swift; sourceTree = "<group>"; };
+		A5DD5C901BFC293200136292 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				A55201631BD55D8D00411155 /* SubmitViewController.swift */,
 				A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */,
 				A53A56CB1BFAE44B00A5C2C6 /* InfoViewController.swift */,
+				A5DD5C901BFC293200136292 /* QRScannerViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */,
 				A55201641BD55D8D00411155 /* SubmitViewController.swift in Sources */,
 				A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */,
+				A5DD5C911BFC293200136292 /* QRScannerViewController.swift in Sources */,
 				A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */,
 				A5CE70CB1BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift in Sources */,
 				A5CE70C81BE7C97200780E15 /* FeedbackHistory.xcdatamodeld in Sources */,

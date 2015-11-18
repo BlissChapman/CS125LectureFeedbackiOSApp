@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 
 final class QRCodeHelper {
@@ -63,6 +64,20 @@ final class QRCodeHelper {
         }
         
         return UIImage(CGImage: scaledCGImage, scale: scaledImage.scale, orientation: .DownMirrored)
+    }
+    
+    //MARK: Camera Permissions
+    static func cameraAccessIsAllowed() -> Bool {
+        switch AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) {
+        case .Authorized: return true
+        case .Denied, .Restricted: return false
+        case .NotDetermined:
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted: Bool) in
+                return cameraAccessIsAllowed()
+            })
+        }
+        
+        return false
     }
     
     /*

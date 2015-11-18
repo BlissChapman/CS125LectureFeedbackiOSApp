@@ -42,7 +42,7 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         viewSourceCodeButton.titleLabel?.textAlignment = .Center
         viewSourceCodeButton.setTitle("View Source Code", forState: .Normal)
         
-        appDescriptionTextView.setContentOffset(CGPointZero, animated: false)
+        appDescriptionTextView.scrollRangeToVisible(NSRange(location:0, length:0))
         
         //generate qr code based on the user's cached net id
         let qrCode = QRCodeHelper.generateQRCode(forString: Feedback.UsersID ?? "Use the app once first 🙃")

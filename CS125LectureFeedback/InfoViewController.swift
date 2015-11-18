@@ -104,8 +104,9 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         }
         
         let feedbackMail = MFMailComposeViewController()
+        feedbackMail.view.tintColor = UIUCColor.ORANGE
         feedbackMail.mailComposeDelegate = self
-        feedbackMail.setSubject("CS125: Lecture Feedback App")
+        feedbackMail.setSubject("CS 125: Lecture Feedback App")
         feedbackMail.setToRecipients(["nbchapm2@illinois.edu"])
         feedbackMail.setMessageBody("Hello Bliss,\n", isHTML: false)
         

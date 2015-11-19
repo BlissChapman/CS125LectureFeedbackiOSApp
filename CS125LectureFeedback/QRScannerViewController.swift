@@ -21,6 +21,7 @@ class QRScannerViewController: UIViewController, UINavigationBarDelegate, UIBarP
     
     private var session = AVCaptureSession()
     private var preview = AVCaptureVideoPreviewLayer()
+    private let unwindSegue = "unwindSegue"
     var validPartnerID: String?
     
     //MARK: View Controller Lifecycle
@@ -60,14 +61,12 @@ class QRScannerViewController: UIViewController, UINavigationBarDelegate, UIBarP
     }
     
     private func retrievedQRCodeValue(value: String) {
-        guard value.isValidNetID() else {
-            return
-        }
+        guard value.isValidNetID() else { return}
         
         session.stopRunning()
 
         validPartnerID = value
-        performSegueWithIdentifier("unwindSegue", sender: nil)
+        performSegueWithIdentifier(unwindSegue, sender: nil)
     }
     
     @IBAction private func closeTapped(sender: UIBarButtonItem) {
@@ -82,13 +81,8 @@ class QRScannerViewController: UIViewController, UINavigationBarDelegate, UIBarP
 extension QRScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         
-        guard !metadataObjects.isEmpty else {
-            return
-        }
-        
-        guard let metadataObjectFound = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else {
-            return
-        }
+        guard !metadataObjects.isEmpty else { return }
+        guard let metadataObjectFound = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else { return }
         
         if metadataObjectFound.type == AVMetadataObjectTypeQRCode {
             retrievedQRCodeValue(metadataObjectFound.stringValue)

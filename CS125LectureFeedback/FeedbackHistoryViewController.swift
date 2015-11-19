@@ -21,6 +21,7 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
     
     var selectedPartnerID: String?
     private let reuseIdentifier = "feedbackItemCell"
+    private let unwindSegue = "unwindFromHistory"
     private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     lazy private var fetchedResultsController: NSFetchedResultsController = {
@@ -79,7 +80,7 @@ extension FeedbackHistoryViewController: UITableViewDelegate {
         let item = fetchedResultsController.objectAtIndexPath(indexPath) as! FeedbackItem
 
         selectedPartnerID = item.partnerID
-        performSegueWithIdentifier("unwindFromHistory", sender: nil)
+        performSegueWithIdentifier(unwindSegue, sender: nil)
     }
 }
 

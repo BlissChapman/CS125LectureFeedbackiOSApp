@@ -79,34 +79,4 @@ final class QRCodeHelper {
         
         return false
     }
-    
-    /*
-    func convertQRCodeToData(qrCodeImage: UIImage, jpeg: Bool) -> NSData {
-        UIGraphicsBeginImageContext(qrCodeImage.size)
-        qrCodeImage.drawInRect(CGRectMake(0, 0, qrCodeImage.size.width, qrCodeImage.size.height))
-        var newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        if jpeg == true {
-            var jpegData = UIImageJPEGRepresentation(newImage, 1.0)
-            return jpegData
-        }
-        var pngData = UIImagePNGRepresentation(newImage)
-        return pngData
-    }
-    
-    //SCANNER
-    func playBeepSound() {
-        let url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("beep-07", ofType: "mp3")!)
-        var error: NSError?
-        if let beepSound = url {
-            let audioPlayer = AVAudioPlayer(contentsOfURL: beepSound, error: &error)
-            audioPlayer.volume = 1.0
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-            if error != nil {
-                println(error?.description)
-            }
-        }
-    }
-*/
 }

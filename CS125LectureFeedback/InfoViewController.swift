@@ -32,6 +32,11 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         configureUI()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        //scroll text view to top
+        appDescriptionTextView.scrollRangeToVisible(NSRange(location:0, length:0))
+    }
+    
     //MARK: UI
     private func configureUI() {
         sendFeedbackButton.titleLabel?.lineBreakMode = .ByWordWrapping
@@ -41,8 +46,6 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         viewSourceCodeButton.titleLabel?.lineBreakMode = .ByWordWrapping
         viewSourceCodeButton.titleLabel?.textAlignment = .Center
         viewSourceCodeButton.setTitle("View Source Code", forState: .Normal)
-        
-        appDescriptionTextView.scrollRangeToVisible(NSRange(location:0, length:0))
         
         //generate qr code based on the user's cached net id
         let qrCode = QRCodeHelper.generateQRCode(forString: Feedback.UsersID ?? "UseAppOnce1st")

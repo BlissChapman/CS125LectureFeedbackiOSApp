@@ -23,16 +23,15 @@ public class UIUCButton: ZFRippleButton {
     }
     
     private func configureAttributes() {
-        self.backgroundColor = UIUCColor.BLUE
+        backgroundColor = UIUCColor.BLUE
         
-        self.buttonCornerRadius = Float(self.frame.height / 4.0)
-        self.rippleBackgroundColor = UIUCColor.BLUE
-        self.rippleColor = UIUCColor.ORANGE
-        self.rippleOverBounds = false
-        self.trackTouchLocation = false
-        self.ripplePercent = 1.1
-        
-        self.shadowRippleEnable = true
+        buttonCornerRadius = Float(self.frame.height / 4.0)
+        rippleBackgroundColor = UIUCColor.BLUE
+        rippleColor = UIUCColor.ORANGE
+        rippleOverBounds = false
+        trackTouchLocation = false
+        ripplePercent = 1.1
+        shadowRippleEnable = true
     }
 
 }

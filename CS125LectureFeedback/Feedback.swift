@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class Feedback {
     /**
@@ -22,7 +23,7 @@ class Feedback {
     }
     
     /**
-     Indicates the internet connectivity status of the user's device.
+     Indicates the internet connectivity status of the user's device, abstracting away the nuisances of Apple's Reachability class.
      */
     private static var isConnectedToInternet: Bool {
         get {
@@ -60,6 +61,7 @@ class Feedback {
     
     //MARK: Networking
     private let URL = "http://cs125class.web.engr.illinois.edu/processfeedback.php"//"http://cs125class.web.engr.illinois.edu/feedback.php"
+    
     enum FeedbackError: ErrorType {
         case Logical
         case UndeterminedStatus
@@ -138,10 +140,9 @@ class Feedback {
                     return
                 }
                 
-                print(responseData)
+                //print(responseData)
                 let successful = responseData.containsString(self.yourNetID) && responseData.containsString(self.theirNetID) && statusCode == 200
                 callback(retrieveStatus: { return successful })
-
                 
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             })
@@ -150,5 +151,35 @@ class Feedback {
         //perform the request
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         task.resume()
+    }
+    
+    
+    private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
+    /**
+    Attempts to save the feedback object in CoreData as a FeedbackItem.
+    
+    - Parameters:
+    - completion: handle this callback to determine the status of the save attempt by calling the retrieveStatus function.
+    */
+    func save() {
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("FeedbackItem", inManagedObjectContext: context) as! FeedbackItem
+        newItem.userID = yourNetID
+        newItem.partnerID = theirNetID
+        newItem.lectureRating = lectureRating
+        newItem.understandText = understand
+        newItem.strugglingText = struggle
+        newItem.date = NSDate()
+        
+        do {
+            try context.save()
+        } catch {
+            let alert = SCLAlertView()
+            alert.addButton("Retry", action: { () -> Void in
+                self.save()
+            })
+            alert.showError("Save Failed", subTitle: "Failed to save this feedback in your history.", closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            debugPrint(error)
+        }
     }
 }

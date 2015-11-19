@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */; };
 		A50D27B71BDD62DA00AB5F65 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A50D27B61BDD62DA00AB5F65 /* Reachability.m */; };
+		A53A56CC1BFAE44B00A5C2C6 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A56CB1BFAE44B00A5C2C6 /* InfoViewController.swift */; };
 		A55201621BD556E700411155 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201611BD556E600411155 /* Feedback.swift */; };
 		A55201641BD55D8D00411155 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201631BD55D8D00411155 /* SubmitViewController.swift */; };
 		A55201661BD5787500411155 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55201651BD5787500411155 /* Utilities.swift */; };
@@ -21,6 +22,13 @@
 		A5839FD41BD4A7CB00524E2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD31BD4A7CB00524E2C /* Model.swift */; };
 		A5839FD71BD4AAF300524E2C /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */; };
 		A5839FD91BD523BF00524E2C /* UIUCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD81BD523BF00524E2C /* UIUCButton.swift */; };
+		A5CE70C81BE7C97200780E15 /* FeedbackHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */; };
+		A5CE70CB1BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70C91BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift */; };
+		A5CE70CC1BE7C9F400780E15 /* FeedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */; };
+		A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */; };
+		A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */; };
+		A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */; };
+		A5DD5C911BFC293200136292 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C901BFC293200136292 /* QRScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +36,7 @@
 		A50D27B41BDD62D800AB5F65 /* CS125LectureFeedback-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CS125LectureFeedback-Bridging-Header.h"; sourceTree = "<group>"; };
 		A50D27B51BDD62DA00AB5F65 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A50D27B61BDD62DA00AB5F65 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A53A56CB1BFAE44B00A5C2C6 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A55201611BD556E600411155 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		A55201631BD55D8D00411155 /* SubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		A55201651BD5787500411155 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -42,6 +51,13 @@
 		A5839FD31BD4A7CB00524E2C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		A5839FD81BD523BF00524E2C /* UIUCButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUCButton.swift; sourceTree = "<group>"; };
+		A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedbackHistory.xcdatamodel; sourceTree = "<group>"; };
+		A5CE70C91BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedbackItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackItem.swift; sourceTree = "<group>"; };
+		A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackHistoryViewController.swift; sourceTree = "<group>"; };
+		A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackItemTableViewCell.swift; path = ../FeedbackItemTableViewCell.swift; sourceTree = "<group>"; };
+		A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeHelper.swift; sourceTree = "<group>"; };
+		A5DD5C901BFC293200136292 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +93,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A53A56CA1BFAE41300A5C2C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5839FC11BD49BA800524E2C /* NetIDViewController.swift */,
+				A55201631BD55D8D00411155 /* SubmitViewController.swift */,
+				A5CE70CE1BE7CB4100780E15 /* FeedbackHistoryViewController.swift */,
+				A53A56CB1BFAE44B00A5C2C6 /* InfoViewController.swift */,
+				A5DD5C901BFC293200136292 /* QRScannerViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		A5839FB31BD49BA800524E2C = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				A5839FBF1BD49BA800524E2C /* AppDelegate.swift */,
-				A5839FC11BD49BA800524E2C /* NetIDViewController.swift */,
-				A55201631BD55D8D00411155 /* SubmitViewController.swift */,
-				A55201611BD556E600411155 /* Feedback.swift */,
 				A5839FC31BD49BA800524E2C /* Main.storyboard */,
+				A53A56CA1BFAE41300A5C2C6 /* View Controllers */,
 				A5839FD51BD4A7D300524E2C /* Supporting */,
 			);
 			path = CS125LectureFeedback;
@@ -109,14 +135,28 @@
 		A5839FD51BD4A7D300524E2C /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */,
 				A5839FD31BD4A7CB00524E2C /* Model.swift */,
+				A55201611BD556E600411155 /* Feedback.swift */,
 				A5839FC61BD49BA800524E2C /* Assets.xcassets */,
 				A5839FC81BD49BA800524E2C /* LaunchScreen.storyboard */,
 				A5839FCB1BD49BA800524E2C /* Info.plist */,
+				A5CE70CD1BE7CA2500780E15 /* History */,
 				A508B0B21BDAA90C00EB26D7 /* Utilities */,
 				A50D27B81BDD62EF00AB5F65 /* Frameworks */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		A5CE70CD1BE7CA2500780E15 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE70CA1BE7C9F400780E15 /* FeedbackItem.swift */,
+				A5CE70C91BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift */,
+				A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */,
+				A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */,
+			);
+			name = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,14 +232,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55201621BD556E700411155 /* Feedback.swift in Sources */,
+				A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */,
 				A55201641BD55D8D00411155 /* SubmitViewController.swift in Sources */,
 				A508B0B11BDAA90600EB26D7 /* SCLAlertView.swift in Sources */,
+				A5DD5C911BFC293200136292 /* QRScannerViewController.swift in Sources */,
+				A5CE70CF1BE7CB4100780E15 /* FeedbackHistoryViewController.swift in Sources */,
+				A5CE70CB1BE7C9F400780E15 /* FeedbackItem+CoreDataProperties.swift in Sources */,
+				A5CE70C81BE7C97200780E15 /* FeedbackHistory.xcdatamodeld in Sources */,
 				A50D27B71BDD62DA00AB5F65 /* Reachability.m in Sources */,
+				A53A56CC1BFAE44B00A5C2C6 /* InfoViewController.swift in Sources */,
 				A5839FD21BD4A46B00524E2C /* NetIDTextField.swift in Sources */,
+				A5CE70CC1BE7C9F400780E15 /* FeedbackItem.swift in Sources */,
 				A5839FC21BD49BA800524E2C /* NetIDViewController.swift in Sources */,
 				A5839FC01BD49BA800524E2C /* AppDelegate.swift in Sources */,
 				A5839FD91BD523BF00524E2C /* UIUCButton.swift in Sources */,
 				A55201661BD5787500411155 /* Utilities.swift in Sources */,
+				A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */,
 				A5839FD71BD4AAF300524E2C /* ZFRippleButton.swift in Sources */,
 				A5839FD41BD4A7CB00524E2C /* Model.swift in Sources */,
 			);
@@ -317,7 +365,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CS125LectureFeedback/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.CS125LectureFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -334,7 +382,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CS125LectureFeedback/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.CS125LectureFeedback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -365,6 +413,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */,
+			);
+			currentVersion = A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */;
+			path = FeedbackHistory.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5839FB41BD49BA800524E2C /* Project object */;
 }

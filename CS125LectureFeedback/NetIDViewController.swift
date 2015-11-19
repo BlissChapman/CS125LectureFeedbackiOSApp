@@ -91,9 +91,10 @@ class NetIDViewController: UIViewController {
             alert.addButton("Open Settings", action: { () -> Void in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
             })
-            alert.showError("Unavailable", subTitle: "To access this feature, please allow us to access your camera.", closeButtonTitle: "Ugh, ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
+            alert.showError("Unavailable", subTitle: "To access this feature, please allow us to access your camera.", closeButtonTitle: "Close", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
             return
         }
+        
         
         performSegueWithIdentifier(Segues.toScanner, sender: nil)
     }

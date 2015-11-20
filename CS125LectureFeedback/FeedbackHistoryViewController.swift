@@ -116,7 +116,7 @@ extension FeedbackHistoryViewController: UITableViewDataSource {
         cell.transform = CGAffineTransformMakeTranslation(0, tableView.frame.height)
         
         //animate cell in to place with a delay corresponding to the current cell
-        UIView.animateWithDuration(1.2, delay: (0.075 * Double(indexPath.row)), usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: [], animations: { () -> Void in
+        UIView.animateWithDuration(0.75, delay: (0.25 * Double(indexPath.row)), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: { () -> Void in
         
             cell.transform = CGAffineTransformMakeTranslation(0, 0);
             }, completion: nil)

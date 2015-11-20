@@ -48,13 +48,13 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
         } catch let error as NSError {
             let alert = SCLAlertView()
             alert.showError("Error", subTitle: "Could not fetch your history.  Please close the history view and retry.", closeButtonTitle: "Ok", duration: .infinity, colorStyle: UIUCColor.BLUE.toHex(), colorTextButton: UIColor.whiteColor().toHex())
-
+            
             debugPrint(error)
         }
         
         configureUI()
     }
-
+    
     
     //MARK: UI
     private func configureUI() {
@@ -78,7 +78,7 @@ extension FeedbackHistoryViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = fetchedResultsController.objectAtIndexPath(indexPath) as! FeedbackItem
-
+        
         selectedPartnerID = item.partnerID
         performSegueWithIdentifier(unwindSegue, sender: nil)
     }
@@ -109,6 +109,17 @@ extension FeedbackHistoryViewController: UITableViewDataSource {
         cell.lectureRatingLabel.text = "\(item.lectureRating)"
         cell.understandTextView.text = "\(item.understandText ?? "")"
         cell.strugglingTextView.text = "\(item.strugglingText ?? "")"
+        
+        
+        //Thank you to Jared Franzone for the inspiration!
+        //transition cell off screen
+        cell.transform = CGAffineTransformMakeTranslation(0, tableView.frame.height)
+        
+        //animate cell in to place with a delay corresponding to the current cell
+        UIView.animateWithDuration(1.2, delay: (0.075 * Double(indexPath.row)), usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: [], animations: { () -> Void in
+        
+            cell.transform = CGAffineTransformMakeTranslation(0, 0);
+            }, completion: nil)
         
         return cell
     }

@@ -112,7 +112,8 @@ class InfoViewController: UIViewController, UINavigationBarDelegate, UIBarPositi
         feedbackMail.setSubject("CS 125: Lecture Feedback App")
         feedbackMail.setToRecipients(["nbchapm2@illinois.edu"])
         feedbackMail.setMessageBody("Hello Bliss,\n", isHTML: false)
-        
+        UIButton.appearance().tintColor = UIUCColor.ORANGE
+
         presentViewController(feedbackMail, animated: true, completion: nil)
     }
     
@@ -130,7 +131,7 @@ extension InfoViewController: SFSafariViewControllerDelegate {
 
 extension InfoViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        
+        UIButton.appearance().tintColor = .whiteColor()
         controller.dismissViewControllerAnimated(false, completion: nil)
     }
 }

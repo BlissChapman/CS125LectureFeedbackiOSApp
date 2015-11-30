@@ -18,6 +18,7 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
             navBar.backgroundColor = UIUCColor.BLUE
         }
     }
+    @IBOutlet weak var averageRatingLabel: UILabel!
     
     var selectedPartnerID: String?
     private let reuseIdentifier = "feedbackItemCell"
@@ -60,6 +61,13 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
     private func configureUI() {
         tableView.separatorColor = UIUCColor.BLUE
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        
+        let averageRating = computeAverageOfRatings()
+        if averageRating != -1 {
+            averageRatingLabel.text = "Average Rating: \(averageRating)"
+        } else {
+            averageRatingLabel.text = "Average Rating Unavailable"
+        }
     }
     
     @IBAction private func doneTapped(sender: UIBarButtonItem) {
@@ -68,6 +76,31 @@ class FeedbackHistoryViewController: UIViewController, UINavigationBarDelegate, 
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle { return .LightContent }
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition { return .TopAttached }
+    
+    //MARK: Core Data
+    private func computeAverageOfRatings() -> Int {
+        let fetchRequest = NSFetchRequest(entityName: "FeedbackItem")
+        fetchRequest.resultType = .DictionaryResultType
+        
+        let averagingExpression = NSExpressionDescription()
+        averagingExpression.name = "AverageOfAllRatings"
+        averagingExpression.expression = NSExpression(forFunction: "average:", arguments: NSArray(objects: NSExpression(forKeyPath: "lectureRating")) as [AnyObject])
+        
+        averagingExpression.expressionResultType = .Integer16AttributeType
+        fetchRequest.propertiesToFetch = NSArray(objects: averagingExpression) as [AnyObject]
+        
+        do {
+            let results = try context.executeFetchRequest(fetchRequest)
+            if let averageRating = results[0].objectForKey("AverageOfAllRatings") as? Int {
+                return averageRating
+            } else {
+                return -1
+            }
+        } catch {
+            debugPrint(error)
+            return -1
+        }
+    }
 }
 
 
@@ -117,7 +150,7 @@ extension FeedbackHistoryViewController: UITableViewDataSource {
         
         //animate cell in to place with a delay corresponding to the current cell
         UIView.animateWithDuration(0.75, delay: (0.25 * Double(indexPath.row)), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: { () -> Void in
-        
+            
             cell.transform = CGAffineTransformMakeTranslation(0, 0);
             }, completion: nil)
         

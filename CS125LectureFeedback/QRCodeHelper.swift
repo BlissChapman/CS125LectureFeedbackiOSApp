@@ -21,7 +21,7 @@ final class QRCodeHelper {
         case ExtractingRawImageData
     }
     
-    static func generateQRCode(forString stringToEncode: String) -> QRCodeGenerationResult {
+    static internal func generateQRCode(forString stringToEncode: String) -> QRCodeGenerationResult {
         guard let stringData = stringToEncode.dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: true) else {
             return .Error(message: "Failed to encode the QR Code information.")
         }

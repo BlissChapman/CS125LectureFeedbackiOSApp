@@ -19,7 +19,6 @@
 		A5839FC71BD49BA800524E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5839FC61BD49BA800524E2C /* Assets.xcassets */; };
 		A5839FCA1BD49BA800524E2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5839FC81BD49BA800524E2C /* LaunchScreen.storyboard */; };
 		A5839FD21BD4A46B00524E2C /* NetIDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD11BD4A46B00524E2C /* NetIDTextField.swift */; };
-		A5839FD41BD4A7CB00524E2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD31BD4A7CB00524E2C /* Model.swift */; };
 		A5839FD71BD4AAF300524E2C /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */; };
 		A5839FD91BD523BF00524E2C /* UIUCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5839FD81BD523BF00524E2C /* UIUCButton.swift */; };
 		A5CE70C81BE7C97200780E15 /* FeedbackHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70C61BE7C97200780E15 /* FeedbackHistory.xcdatamodeld */; };
@@ -59,7 +58,6 @@
 		A5839FC91BD49BA800524E2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5839FCB1BD49BA800524E2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5839FD11BD4A46B00524E2C /* NetIDTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetIDTextField.swift; sourceTree = "<group>"; };
-		A5839FD31BD4A7CB00524E2C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A5839FD61BD4AAF300524E2C /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		A5839FD81BD523BF00524E2C /* UIUCButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUCButton.swift; sourceTree = "<group>"; };
 		A5CE70C71BE7C97200780E15 /* FeedbackHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedbackHistory.xcdatamodel; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */,
-				A5839FD31BD4A7CB00524E2C /* Model.swift */,
 				A55201611BD556E600411155 /* Feedback.swift */,
 				A5839FC61BD49BA800524E2C /* Assets.xcassets */,
 				A5839FC81BD49BA800524E2C /* LaunchScreen.storyboard */,
@@ -311,7 +308,6 @@
 				A55201661BD5787500411155 /* Utilities.swift in Sources */,
 				A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */,
 				A5839FD71BD4AAF300524E2C /* ZFRippleButton.swift in Sources */,
-				A5839FD41BD4A7CB00524E2C /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +519,7 @@
 				A5DEB56E1C2C48200017C0E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

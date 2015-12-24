@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import CS125LectureFeedback
 
 class CS125LectureFeedbackTests: XCTestCase {
     
@@ -20,18 +21,21 @@ class CS125LectureFeedbackTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        XCTAssertTrue(true)
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testQRCodeHelper() {
+        let testNetIDS = ["testnetid", "asdfasdfasdf", "a", "  ", "asdf   -  asdf", ""]
+        for testNetID in testNetIDS {
+            switch QRCodeHelper.generateQRCode(forString: testNetID) {
+            case .Success(qrCode: _): XCTAssertTrue(true)
+            case .Error(message: let message):
+                XCTAssertTrue(false, message)
+            }
         }
     }
     
+    func testFeedbackItem() {
+        let feedback = Feedback(netID: "testios", partnerID: "testios")
+        self.measureBlock {
+            feedback.save()
+        }
+    }
 }

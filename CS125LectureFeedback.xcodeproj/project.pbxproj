@@ -29,7 +29,18 @@
 		A5CE70F21BE7D6F500780E15 /* FeedbackItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */; };
 		A5DD5C8F1BFC138000136292 /* QRCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */; };
 		A5DD5C911BFC293200136292 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD5C901BFC293200136292 /* QRScannerViewController.swift */; };
+		A5DEB54C1C2C448B0017C0E8 /* CS125LectureFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB54B1C2C448B0017C0E8 /* CS125LectureFeedbackTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5DEB54E1C2C448B0017C0E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5839FB41BD49BA800524E2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5839FBB1BD49BA800524E2C;
+			remoteInfo = CS125LectureFeedback;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A508B0B01BDAA90600EB26D7 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
@@ -58,10 +69,20 @@
 		A5CE70F11BE7D6F500780E15 /* FeedbackItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackItemTableViewCell.swift; path = ../FeedbackItemTableViewCell.swift; sourceTree = "<group>"; };
 		A5DD5C8E1BFC138000136292 /* QRCodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeHelper.swift; sourceTree = "<group>"; };
 		A5DD5C901BFC293200136292 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		A5DEB5491C2C448B0017C0E8 /* CS125LectureFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CS125LectureFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5DEB54B1C2C448B0017C0E8 /* CS125LectureFeedbackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CS125LectureFeedbackTests.swift; sourceTree = "<group>"; };
+		A5DEB54D1C2C448B0017C0E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A5839FB91BD49BA800524E2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5DEB5461C2C448B0017C0E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -109,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				A5839FBE1BD49BA800524E2C /* CS125LectureFeedback */,
+				A5DEB54A1C2C448B0017C0E8 /* CS125LectureFeedbackTests */,
 				A5839FBD1BD49BA800524E2C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				A5839FBC1BD49BA800524E2C /* CS125LectureFeedback.app */,
+				A5DEB5491C2C448B0017C0E8 /* CS125LectureFeedbackTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +182,15 @@
 			name = History;
 			sourceTree = "<group>";
 		};
+		A5DEB54A1C2C448B0017C0E8 /* CS125LectureFeedbackTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5DEB54B1C2C448B0017C0E8 /* CS125LectureFeedbackTests.swift */,
+				A5DEB54D1C2C448B0017C0E8 /* Info.plist */,
+			);
+			path = CS125LectureFeedbackTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,19 +211,41 @@
 			productReference = A5839FBC1BD49BA800524E2C /* CS125LectureFeedback.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A5DEB5481C2C448B0017C0E8 /* CS125LectureFeedbackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5DEB5521C2C448B0017C0E8 /* Build configuration list for PBXNativeTarget "CS125LectureFeedbackTests" */;
+			buildPhases = (
+				A5DEB5451C2C448B0017C0E8 /* Sources */,
+				A5DEB5461C2C448B0017C0E8 /* Frameworks */,
+				A5DEB5471C2C448B0017C0E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5DEB54F1C2C448B0017C0E8 /* PBXTargetDependency */,
+			);
+			name = CS125LectureFeedbackTests;
+			productName = CS125LectureFeedbackTests;
+			productReference = A5DEB5491C2C448B0017C0E8 /* CS125LectureFeedbackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A5839FB41BD49BA800524E2C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Bliss Chapman";
 				TargetAttributes = {
 					A5839FBB1BD49BA800524E2C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = V3N72D7MS5;
+					};
+					A5DEB5481C2C448B0017C0E8 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = A5839FBB1BD49BA800524E2C;
 					};
 				};
 			};
@@ -209,6 +263,7 @@
 			projectRoot = "";
 			targets = (
 				A5839FBB1BD49BA800524E2C /* CS125LectureFeedback */,
+				A5DEB5481C2C448B0017C0E8 /* CS125LectureFeedbackTests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,6 +276,13 @@
 				A5839FCA1BD49BA800524E2C /* LaunchScreen.storyboard in Resources */,
 				A5839FC71BD49BA800524E2C /* Assets.xcassets in Resources */,
 				A5839FC51BD49BA800524E2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5DEB5471C2C448B0017C0E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +315,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5DEB5451C2C448B0017C0E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5DEB54C1C2C448B0017C0E8 /* CS125LectureFeedbackTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5DEB54F1C2C448B0017C0E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5839FBB1BD49BA800524E2C /* CS125LectureFeedback */;
+			targetProxy = A5DEB54E1C2C448B0017C0E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A5839FC31BD49BA800524E2C /* Main.storyboard */ = {
@@ -391,6 +469,32 @@
 			};
 			name = Release;
 		};
+		A5DEB5501C2C448B0017C0E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CS125LectureFeedbackTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.CS125LectureFeedbackTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CS125LectureFeedback.app/CS125LectureFeedback";
+			};
+			name = Debug;
+		};
+		A5DEB5511C2C448B0017C0E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CS125LectureFeedbackTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.CS125LectureFeedbackTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CS125LectureFeedback.app/CS125LectureFeedback";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -411,6 +515,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A5DEB5521C2C448B0017C0E8 /* Build configuration list for PBXNativeTarget "CS125LectureFeedbackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5DEB5501C2C448B0017C0E8 /* Debug */,
+				A5DEB5511C2C448B0017C0E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

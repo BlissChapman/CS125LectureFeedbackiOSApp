@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A5DEB5481C2C448B0017C0E8"
+               BuildableName = "CS125LectureFeedbackTests.xctest"
+               BlueprintName = "CS125LectureFeedbackTests"
+               ReferencedContainer = "container:CS125LectureFeedback.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

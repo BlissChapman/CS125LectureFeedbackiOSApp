@@ -1,0 +1,14 @@
+language: objective-c
+ 
+branches:
+ only:
+ - master
+ - develop
+ 
+xcode_project: CS125LectureFeedback.xcodeproj
+xcode_scheme: CS125LectureFeedbackTests
+osx_image: xcode7.2
+xcode_sdk: iphoneos9.2
+ 
+script:
+- xcodebuild clean build test -project CS125LectureFeedback.xcodeproj -scheme CS125LectureFeedbackTests

@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CS125LectureFeedbackTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>A5DEB5481C2C448B0017C0E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5DEB5561C2C47F20017C0E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5DEB5641C2C48200017C0E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

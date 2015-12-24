@@ -1,4 +1,4 @@
-# Lecture Feedback
+# Lecture Feedback ![](https://travis-ci.org/Togira/CS125LectureFeedbackiOSApp.svg)
 The University of Illinois CS125 lecture feedback app accepts feedback on course content and permits students to view a history of their lecture participation.  Submitted feedback is used to monitor student progress, rapidly improve course content, and as a basis for research on educational methodology.
 
 ###v.1.1.1
